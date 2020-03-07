@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AuthTheme" parent="FullScreenTheme">
-        <item name="android:windowBackground">@mipmap/bg_home</item>
-    </style>
-
     <style name="MaterialButton" parent="Widget.MaterialComponents.Button">
         <item name="android:textSize">@dimen/sp_16</item>
         <item name="android:paddingBottom">@dimen/dp_16</item>

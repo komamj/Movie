@@ -4,18 +4,16 @@
     <application>
         <activity
             android:name=".AuthActivity"
-            android:theme="@style/AuthTheme" />
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".login.LoginActivity"
             android:label="@string/login"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".register.RegisterActivity"
             android:label="@string/user_register"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

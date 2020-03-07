@@ -24,10 +24,10 @@ import com.google.firebase.database.DatabaseReference
 import com.koma.authlibrary.data.entities.User
 import com.koma.authlibrary.di.AuthScoped
 import com.koma.commonlibrary.data.entities.Result
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 @AuthScoped
 class AuthRepositoryImp @Inject constructor(
