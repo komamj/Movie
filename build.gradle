@@ -1,0 +1,52 @@
+buildscript {
+    apply from: 'version.gradle'
+
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradlePluginVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "com.google.gms:google-services:$googleServicesVersion"
+        classpath "io.fabric.tools:gradle:$fabricGradleVersion"
+    }
+}
+
+plugins {
+    id "com.diffplug.gradle.spotless" version "3.26.1"
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+subprojects {
+    apply plugin: 'com.diffplug.gradle.spotless'
+    spotless {
+        kotlin {
+            target "**/*.kt"
+            ktlint().userData([
+                    'max_line_length': '100',
+            ])
+            licenseHeaderFile project.rootProject.file('copyright.kt')
+        }
+    }
+
+    tasks.whenTaskAdded {
+        if (name == 'preBuild') {
+            mustRunAfter 'spotlessCheck'
+        }
+    }
+}
+
+task initGitHooks {
+    ['sh', '-c', 'git config core.hooksPath .githooks'].execute().text.trim()
+}
+
+tasks.getByPath(':app:preBuild').dependsOn initGitHooks

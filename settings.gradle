@@ -1,0 +1,2 @@
+rootProject.name='Movie'
+include ':app', ':commonlibrary', ':authlibrary', ':testlibrary', ':storagelibrary'

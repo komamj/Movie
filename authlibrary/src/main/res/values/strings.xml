@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_description">Your Coach for Life</string>
+    <string name="get_started">Get Started</string>
+    <string name="have_account">Already have an account?</string>
+    <string name="terms_and_conditions">By proceeding, I agree to the terms and conditions.</string>
+    <!--Login-->
+    <string name="login">Sign In</string>
+    <string name="login_successful">Sign in successful.</string>
+    <string name="login_failed">Sign in failed. Please try again.</string>
+    <string name="email">Email</string>
+    <string name="email_empty">Error: Email is empty. Please try again.</string>
+    <string name="email_invalid">Error: Email is invalid. Please try again.</string>
+    <string name="password">Password</string>
+    <string name="password_empty">Error: Password is empty. Please try again.</string>
+    <!--Register-->
+    <string name="user_register">User Sign Up</string>
+    <string name="next">Next</string>
+    <string name="security_notice">For your security,your password must contain at lest 8 characters with 1 uppercase letter,1 number and 1
+        symbol (like !@#$%^)</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+</resources>

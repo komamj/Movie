@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion defaultCompileSdkVersion as Integer
+    buildToolsVersion defaultBuildToolsVersion as String
+
+    defaultConfig {
+        minSdkVersion defaultMinSdkVersion as Integer
+        targetSdkVersion defaultTargetSdkVersion as String
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            consumerProguardFiles 'consumer-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+}

@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+COMMIT_FORMAT_POLICY_TAG = "[COMMIT_FORMAT_POLICY] ERROR::"
+COMMIT_ERROR_BANNER = "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+$COMMIT_FORMAT_REGEX = /^(chore|docs|feat|fix|refactor|style|test|build|ci|revert|pref)\: \[[A-z0-9\s&]+\] #(((CAFPM|CAFAM|CAFEM|CAFCSM|CAFCS)-\d+)|((CAF[A-z0-9\s&]+)-\d+)|(N\/A)) [\sA-z0-9\-\.,_\"]+$/
+
+message_file = ARGV[0]
+message = File.read(message_file)
+
+if message.include? "This reverts commit"
+  exit 0
+end
+
+if message.include? "It looks like you may be committing a cherry-pick"
+  exit 0
+end
+
+if message.start_with? "Merge branch"
+  exit 0
+end
+
+if !$COMMIT_FORMAT_REGEX.match(message)
+  puts COMMIT_ERROR_BANNER
+  puts "#{COMMIT_FORMAT_POLICY_TAG} Commit message format invalid. Please follow the format as follows:"
+  puts "chore|docs|feat|fix|refactor|style|test|build|ci|revert|pref: [module name] #jira_issue_code your_commit_message."
+  puts "E.g."
+  puts "fix: [app] #OTAS-1234 error message not displaying correctly when WIP creation failed."
+  puts "Or:"
+  puts "fix: [app] #N/A publish the correct version of accessory import template."
+  puts "Verb list:"
+  puts "  feat     - new feature for the user, not a new feature for build script"
+  puts "  fix      - bug fix for the user, not a fix to a build script"
+  puts "  refactor - refactoring production code e.g. renaming a variable"
+  puts "  test     - adding missing tests, refactoring tests, no production code change"
+  puts "  chore    - other changes that don't modify src or test files"
+  puts "  style    - changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)"
+  puts "  docs     - changes to the documentation, comment etc."
+  puts "  pref     - a code change that improves performance"
+  puts "  build    - changes that affect the build system or external dependencies"
+  puts "  ci       - changes to our CI configuration files and scripts"
+  puts "  revert   - reverts a previous commit"
+  puts COMMIT_ERROR_BANNER
+  exit 1
+end
+

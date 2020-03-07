@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "308643586122",
+    "firebase_url": "https://movie-ba0ec.firebaseio.com",
+    "project_id": "movie-ba0ec",
+    "storage_bucket": "movie-ba0ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308643586122:android:b89ec707b5a138b682c6b3",
+        "android_client_info": {
+          "package_name": "com.koma.movie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308643586122-91e2b11imrb8j4i6m18m9kb3a2jf6bm8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ5daYPec5GQ67GzxMS5q_ditqCDG6pOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308643586122-91e2b11imrb8j4i6m18m9kb3a2jf6bm8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

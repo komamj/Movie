@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo "Running spotlessCheck"
+
+./gradlew spotlessCheck
+result=$?
+if [ "$result" = 0 ] ; then    
+   echo "spotlessCheck found no problems"
+   exit 0
+else
+   echo
+   "Problems found, files will not be committed."     
+   exit 1
+fi

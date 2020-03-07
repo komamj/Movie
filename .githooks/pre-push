@@ -1,0 +1,10 @@
+#!/bin/bash
+command="./gradlew clean test"
+echo "Executing tests before commit"
+$command
+result=$?
+if [ "$result" -ne 0 ]; then
+ echo "Failed execution of tests"
+ exit 1
+fi
+exit 0

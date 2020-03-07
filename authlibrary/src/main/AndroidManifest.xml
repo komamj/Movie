@@ -1,0 +1,21 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.koma.authlibrary">
+
+    <application>
+        <activity
+            android:name=".AuthActivity"
+            android:theme="@style/AuthTheme" />
+
+        <activity
+            android:name=".login.LoginActivity"
+            android:label="@string/login"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".register.RegisterActivity"
+            android:label="@string/user_register"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+</manifest>
