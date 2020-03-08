@@ -41,6 +41,8 @@ android {
 
     buildTypes {
         release {
+            resValue "string", "interstitial_ad_unit_id", "$release_interstitial_ad_unit_id"
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -73,6 +75,8 @@ dependencies {
 
     implementation "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+
+    implementation "pub.devrel:easypermissions:$permissionVersion"
 
     implementation "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
 

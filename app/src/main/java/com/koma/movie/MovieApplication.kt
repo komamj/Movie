@@ -43,7 +43,6 @@ class MovieApplication : Application() {
             StrictMode.ThreadPolicy.Builder()
                 .detectAll()
                 .penaltyLog()
-                .penaltyDeath()
                 .build()
         )
     }
