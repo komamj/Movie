@@ -19,7 +19,7 @@
     </style>
 
     <style name="SplashTheme" parent="FullScreenTheme">
-        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowBackground">@drawable/window_bg_splash</item>
     </style>
 
 </resources>

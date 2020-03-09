@@ -14,9 +14,6 @@
  * limitations under the License.
  */
 
-package com.koma.movie.splash
+package com.koma.movie.data.source
 
-import androidx.lifecycle.ViewModel
-import com.koma.movie.data.source.MovieRepository
-
-class SplashViewModel constructor(private val repository: MovieRepository) : ViewModel()
+interface MovieRepository
