@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-package com.koma.authlibrary.register
+package com.koma.movie.splash
 
-import android.os.Bundle
-import com.koma.authlibrary.base.BaseAuthActivity
+import androidx.lifecycle.ViewModel
+import com.koma.movie.data.source.MovieRepository
 
-class RegisterActivity : BaseAuthActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-}
+class SplashViewModel constructor(private val repository: MovieRepository) : ViewModel()

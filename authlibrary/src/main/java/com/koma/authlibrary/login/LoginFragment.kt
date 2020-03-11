@@ -18,16 +18,16 @@ package com.koma.authlibrary.login
 
 import android.content.Context
 import android.os.Bundle
-import androidx.lifecycle.observe
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.koma.authlibrary.R
 import com.koma.authlibrary.ViewModelFactory
 import com.koma.authlibrary.databinding.FragmentLoginBinding
 import com.koma.authlibrary.di.AuthRepositoryModule
 import com.koma.authlibrary.di.DaggerAuthComponent
 import com.koma.commonlibrary.base.BaseFragment
-import timber.log.Timber
 import javax.inject.Inject
+import timber.log.Timber
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     @Inject
@@ -53,8 +53,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.isLoading.observe(viewLifecycleOwner){
-
+        viewModel.isLoading.observe(viewLifecycleOwner) {
         }
     }
 }

@@ -14,13 +14,6 @@
  * limitations under the License.
  */
 
-package com.koma.authlibrary.register
+package com.koma.movie.data.source
 
-import android.os.Bundle
-import com.koma.authlibrary.base.BaseAuthActivity
-
-class RegisterActivity : BaseAuthActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-}
+interface MovieRepository
