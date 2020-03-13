@@ -16,4 +16,81 @@
 
 package com.koma.movie.data.source.remote
 
-class RemoteDataSource
+import com.koma.commonlibrary.data.entities.Result
+import com.koma.movie.data.entities.Movie
+import com.koma.movie.data.source.MovieDataSource
+import javax.inject.Inject
+
+class RemoteDataSource @Inject constructor(private val webService: WebService) : MovieDataSource {
+    override suspend fun getPopularMovie(page: Int): Result<List<Movie>> {
+        return try {
+            val movieList = webService.getPopularMovie(page).data
+            Result.Success(movieList)
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
+
+    override suspend fun getTopRatedMovie(page: Int): Result<List<Movie>> {
+        return try {
+            val movieList = webService.getTopRatedMovie(page).data
+            Result.Success(movieList)
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
+
+    override suspend fun getNowPlayingMovie(page: Int): Result<List<Movie>> {
+        return try {
+            val movieList = webService.getNowPlayingMovie(page).data
+            Result.Success(movieList)
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
+
+    override suspend fun getUpcomingMovie(page: Int): Result<List<Movie>> {
+        return try {
+            val movieList = webService.getUpcomingMovie(page).data
+            Result.Success(movieList)
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
+
+    /**
+     * Get a list of similar movies
+     */
+    override suspend fun getSimilarMovie(movieId: Int): Result<List<Movie>> {
+        return try {
+            val movieList = webService.getSimilarMovie(movieId).data
+            Result.Success(movieList)
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
+
+    /**
+     * Get a list of recommended movies for a movie.
+     */
+    override suspend fun getRecommendedMovie(movieId: Int): Result<List<Movie>> {
+        return try {
+            val movieList = webService.getRecommendedMovie(movieId).data
+            Result.Success(movieList)
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
+
+    suspend fun getImages(movieId: Int) {
+        TODO("Not yet implemented")
+    }
+
+    suspend fun postRatingMovie(movieId: Int) {
+        TODO("Not yet implemented")
+    }
+
+    suspend fun searchMovie(keyword: String, includeAdult: Boolean): Result<List<Movie>> {
+        TODO("Not yet implemented")
+    }
+}

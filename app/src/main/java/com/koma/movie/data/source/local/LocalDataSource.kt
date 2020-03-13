@@ -16,4 +16,60 @@
 
 package com.koma.movie.data.source.local
 
-class LocalDataSource
+import com.koma.commonlibrary.data.entities.Result
+import com.koma.movie.data.entities.Movie
+import com.koma.movie.data.source.MovieDataSource
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
+
+class LocalDataSource @Inject constructor(
+    private val preferenceHelper: PreferenceHelper,
+    private val movieDao: MovieDao
+) : MovieDataSource {
+    override suspend fun getPopularMovie(page: Int): Result<List<Movie>> =
+        withContext(context = Dispatchers.IO) {
+            return@withContext try {
+                val movieList = movieDao.getMovie(page)
+                Result.Success(movieList)
+            } catch (e: Exception) {
+                Result.Error(e)
+            }
+        }
+
+    override suspend fun getTopRatedMovie(page: Int): Result<List<Movie>> =
+        withContext(context = Dispatchers.IO) {
+            return@withContext try {
+                val movieList = movieDao.getMovie(page)
+                Result.Success(movieList)
+            } catch (e: Exception) {
+                Result.Error(e)
+            }
+        }
+
+    override suspend fun getNowPlayingMovie(page: Int): Result<List<Movie>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getUpcomingMovie(page: Int): Result<List<Movie>> {
+        TODO("Not yet implemented")
+    }
+
+    /**
+     * Get a list of similar movies
+     */
+    override suspend fun getSimilarMovie(movieId: Int): Result<List<Movie>> {
+        TODO("Not yet implemented")
+    }
+
+    /**
+     * Get a list of recommended movies for a movie.
+     */
+    override suspend fun getRecommendedMovie(movieId: Int): Result<List<Movie>> {
+        TODO("Not yet implemented")
+    }
+
+    suspend fun saveMovie(movie: List<Movie>) = withContext(context = Dispatchers.IO) {
+        movieDao.insert(movie)
+    }
+}

@@ -16,4 +16,34 @@
 
 package com.koma.movie.data.source
 
-interface MovieRepository
+import com.koma.commonlibrary.data.entities.Result
+import com.koma.movie.data.entities.Movie
+
+interface MovieRepository {
+    suspend fun getPopularMovie(page: Int, forceUpdate: Boolean = false): Result<List<Movie>>
+
+    suspend fun getTopRatedMovie(page: Int, forceUpdate: Boolean = false): Result<List<Movie>>
+
+    suspend fun getNowPlayingMovie(page: Int, forceUpdate: Boolean = false): Result<List<Movie>>
+
+    suspend fun getUpcomingMovie(page: Int, forceUpdate: Boolean = false): Result<List<Movie>>
+
+    /**
+     * Get a list of similar movies
+     */
+    suspend fun getSimilarMovie(movieId: Int, forceUpdate: Boolean = false): Result<List<Movie>>
+
+    /**
+     * Get a list of recommended movies for a movie.
+     */
+    suspend fun getRecommendedMovie(movieId: Int, forceUpdate: Boolean = false): Result<List<Movie>>
+
+    suspend fun getImages(movieId: Int)
+
+    suspend fun postRatingMovie(movieId: Int)
+
+    suspend fun searchMovie(
+        keyword: String,
+        includeAdult: Boolean = true
+    ): Result<List<Movie>>
+}

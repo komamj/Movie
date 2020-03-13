@@ -14,19 +14,14 @@
  * limitations under the License.
  */
 
-package com.koma.movie.splash
+package com.koma.movie.data.source.remote
 
-import com.koma.movie.data.source.MovieRepository
-import com.nhaarman.mockitokotlin2.mock
 import org.junit.Before
 
-class SplashViewModelTest {
-    private lateinit var viewModel: SplashViewModel
-
-    private val repository: MovieRepository = mock()
+class WebServiceTest {
+    private lateinit var webService: WebService
 
     @Before
     fun `init`() {
-        viewModel = SplashViewModel(repository)
     }
 }
