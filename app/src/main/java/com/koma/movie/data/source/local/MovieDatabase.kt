@@ -14,19 +14,17 @@
  * limitations under the License.
  */
 
-package com.koma.movie.splash
+package com.koma.movie.data.source.local
 
-import com.koma.movie.data.source.MovieRepository
-import com.nhaarman.mockitokotlin2.mock
-import org.junit.Before
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import com.koma.movie.data.entities.Movie
 
-class SplashViewModelTest {
-    private lateinit var viewModel: SplashViewModel
-
-    private val repository: MovieRepository = mock()
-
-    @Before
-    fun `init`() {
-        viewModel = SplashViewModel(repository)
-    }
+@Database(
+    version = 1,
+    entities = [Movie::class],
+    exportSchema = true
+)
+abstract class MovieDatabase : RoomDatabase() {
+    abstract fun movieDao(): MovieDao
 }

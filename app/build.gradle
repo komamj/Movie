@@ -22,6 +22,18 @@ android {
 
         resValue "string", "ad_unit_id", "$ad_unit_id"
 
+        buildConfigField 'String', 'ENDPOINT', "\"${endpoint}\""
+        buildConfigField 'String', 'TMDB_API_KEY', "\"${tmdb_api_key}\""
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true"]
+            }
+        }
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -64,6 +76,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
     implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
 
     implementation "com.github.bumptech.glide:glide:$glideVersion"
@@ -93,4 +106,6 @@ dependencies {
     implementation project(':authlibrary')
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
+
+    testImplementation "androidx.room:room-testing:$roomVersion"
 }

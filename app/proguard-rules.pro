@@ -20,10 +20,23 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -keepattributes SourceFile,LineNumberTable
-
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 -renamesourcefileattribute SourceFile
+
+-keep class androidx.room.RoomDataBase { *; }
+-keep class androidx.room.Room { *; }
+-keep class android.arch.** { *; }
+
+# Proguard rules that are applied to your test apk/code.
+-ignorewarnings
+
+-keepattributes *Annotation*
+
+-dontnote junit.framework.**
+-dontnote junit.runner.**
+# Uncomment this if you use Mockito
+-dontwarn org.mockito.**
 
 # Retrofit does reflection on generic parameters. InnerClasses is required to use Signature and
 # EnclosingMethod is required to use InnerClasses.

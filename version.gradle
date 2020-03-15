@@ -56,7 +56,7 @@ ext {
     // Firebase
     kotlinxCoroutinesPlayServicesVersion = '1.1.1'
     firebaseCoreVersion = '17.2.3'
-    firebaseAuthVersion = '19.2.0'
+    firebaseAuthVersion = '19.3.0'
     firebaseDatabaseVersion = '19.2.1'
     firebaseStorageVersion = '19.1.1'
     firebaseAdsVersion = '19.0.0'

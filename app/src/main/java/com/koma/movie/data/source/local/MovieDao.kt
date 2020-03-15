@@ -14,19 +14,22 @@
  * limitations under the License.
  */
 
-package com.koma.movie.splash
+package com.koma.movie.data.source.local
 
-import com.koma.movie.data.source.MovieRepository
-import com.nhaarman.mockitokotlin2.mock
-import org.junit.Before
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.koma.movie.data.entities.Movie
 
-class SplashViewModelTest {
-    private lateinit var viewModel: SplashViewModel
+@Dao
+interface MovieDao {
+    @Query("SELECT * from movie where page = :page")
+    suspend fun getMovie(page: Int): List<Movie>
 
-    private val repository: MovieRepository = mock()
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(movie: List<Movie>)
 
-    @Before
-    fun `init`() {
-        viewModel = SplashViewModel(repository)
-    }
+    @Query("DELETE FROM movie")
+    suspend fun deleteAll()
 }

@@ -18,6 +18,9 @@ package com.koma.movie
 
 import android.app.Application
 import android.os.StrictMode
+import com.koma.commonlibrary.di.ApplicationModule
+import com.koma.movie.di.DaggerAppComponent
+import com.koma.movie.di.RepositoryModule
 import com.koma.movie.util.DebugTree
 import com.koma.movie.util.ReleaseTree
 import leakcanary.AppWatcher
@@ -26,6 +29,11 @@ import timber.log.Timber
 class MovieApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        DaggerAppComponent.builder()
+            .applicationModule(ApplicationModule(this))
+            .repositoryModule(RepositoryModule())
+            .build()
 
         if (BuildConfig.DEBUG) {
             Timber.plant(DebugTree())

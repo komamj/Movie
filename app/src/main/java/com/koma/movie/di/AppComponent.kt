@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-package com.koma.movie.splash
+package com.koma.movie.di
 
+import com.koma.commonlibrary.di.ApplicationModule
 import com.koma.movie.data.source.MovieRepository
-import com.nhaarman.mockitokotlin2.mock
-import org.junit.Before
+import dagger.Component
+import javax.inject.Singleton
 
-class SplashViewModelTest {
-    private lateinit var viewModel: SplashViewModel
-
-    private val repository: MovieRepository = mock()
-
-    @Before
-    fun `init`() {
-        viewModel = SplashViewModel(repository)
-    }
+@Singleton
+@Component(modules = [RepositoryModule::class, ApplicationModule::class])
+interface AppComponent {
+    fun getMovieRepository(): MovieRepository
 }

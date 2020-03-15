@@ -14,19 +14,13 @@
  * limitations under the License.
  */
 
-package com.koma.movie.splash
+package com.koma.movie.data.entities
 
-import com.koma.movie.data.source.MovieRepository
-import com.nhaarman.mockitokotlin2.mock
-import org.junit.Before
+import com.google.gson.annotations.SerializedName
 
-class SplashViewModelTest {
-    private lateinit var viewModel: SplashViewModel
-
-    private val repository: MovieRepository = mock()
-
-    @Before
-    fun `init`() {
-        viewModel = SplashViewModel(repository)
-    }
-}
+data class DataModel<T>(
+    @SerializedName("page")
+    val page: Int,
+    @SerializedName("results")
+    val data: List<T>?
+)
