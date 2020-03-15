@@ -19,9 +19,9 @@ package com.koma.movie.data.source.local
 import com.koma.commonlibrary.data.entities.Result
 import com.koma.movie.data.entities.Movie
 import com.koma.movie.data.source.MovieDataSource
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(
     private val preferenceHelper: PreferenceHelper,
