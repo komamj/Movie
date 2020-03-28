@@ -32,9 +32,9 @@ class MovieRepositoryImp @Inject constructor(
         return if (forceUpdate) {
             val result = remoteDataSource.getPopularMovie(page)
             if (result is Result.Success) {
-                result.data?.run {
+                /*result.data?.run {
                     localDataSource.saveMovie(this)
-                }
+                }*/
             }
             result
         } else {
@@ -43,15 +43,45 @@ class MovieRepositoryImp @Inject constructor(
     }
 
     override suspend fun getTopRatedMovie(page: Int, forceUpdate: Boolean): Result<List<Movie>> {
-        TODO("Not yet implemented")
+        return if (forceUpdate) {
+            val result = remoteDataSource.getTopRatedMovie(page)
+            if (result is Result.Success) {
+                /*result.data?.run {
+                    localDataSource.saveMovie(this)
+                }*/
+            }
+            result
+        } else {
+            localDataSource.getPopularMovie(page)
+        }
     }
 
     override suspend fun getNowPlayingMovie(page: Int, forceUpdate: Boolean): Result<List<Movie>> {
-        TODO("Not yet implemented")
+        return if (forceUpdate) {
+            val result = remoteDataSource.getNowPlayingMovie(page)
+            if (result is Result.Success) {
+                /*result.data?.run {
+                    localDataSource.saveMovie(this)
+                }*/
+            }
+            result
+        } else {
+            localDataSource.getPopularMovie(page)
+        }
     }
 
     override suspend fun getUpcomingMovie(page: Int, forceUpdate: Boolean): Result<List<Movie>> {
-        TODO("Not yet implemented")
+        return if (forceUpdate) {
+            val result = remoteDataSource.getUpcomingMovie(page)
+            if (result is Result.Success) {
+                /*result.data?.run {
+                    localDataSource.saveMovie(this)
+                }*/
+            }
+            result
+        } else {
+            localDataSource.getPopularMovie(page)
+        }
     }
 
     /**

@@ -27,14 +27,17 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.widget.ContentLoadingProgressBar
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.koma.commonlibrary.util.GlideApp
 
+private const val IMAGE_URL = "http://image.tmdb.org/t/p/w342"
+
 @BindingAdapter(value = ["imageUrl"])
 fun bindImageUrl(view: ImageView, imageUrl: String?) {
     GlideApp.with(view.context)
-        .load(imageUrl)
+        .load("$IMAGE_URL$imageUrl")
         .placeholder(ColorDrawable(Color.GRAY))
         .transition(DrawableTransitionOptions.withCrossFade())
         .thumbnail(0.1f)
@@ -47,6 +50,15 @@ fun bindIsGone(view: View, isGone: Boolean) {
         View.GONE
     } else {
         View.VISIBLE
+    }
+}
+
+@BindingAdapter("isActive")
+fun bindIsActive(progressBar: ContentLoadingProgressBar, isActive: Boolean) {
+    if (isActive) {
+        progressBar.show()
+    } else {
+        progressBar.hide()
     }
 }
 

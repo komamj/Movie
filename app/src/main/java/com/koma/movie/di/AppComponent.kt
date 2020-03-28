@@ -17,12 +17,12 @@
 package com.koma.movie.di
 
 import com.koma.commonlibrary.di.ApplicationModule
-import com.koma.movie.data.source.MovieRepository
+import com.koma.movie.MovieViewModelFactory
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [RepositoryModule::class, ApplicationModule::class])
 interface AppComponent {
-    fun getMovieRepository(): MovieRepository
+    fun getViewModelFactory(): MovieViewModelFactory
 }

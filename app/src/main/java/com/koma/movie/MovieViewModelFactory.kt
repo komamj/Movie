@@ -16,22 +16,29 @@
 
 package com.koma.movie
 
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.koma.movie.data.source.MovieRepository
+import com.koma.movie.home.HomeViewModel
 import com.koma.movie.splash.SplashViewModel
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Suppress("UNCHECKED_CAST")
 @Singleton
-class MovieViewModelFactory @Inject constructor(private val repository: MovieRepository) :
+class MovieViewModelFactory @Inject constructor(
+    private val repository: MovieRepository,
+    private val application: Application
+) :
     ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>) =
         with(modelClass) {
             when {
                 isAssignableFrom(SplashViewModel::class.java) ->
                     SplashViewModel(repository)
+                isAssignableFrom(HomeViewModel::class.java) ->
+                    HomeViewModel(repository, application = application)
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
