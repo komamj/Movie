@@ -38,7 +38,7 @@ class PreferenceHelper @Inject constructor(application: Application) {
     }
 
     private fun getBoolean(key: String, @Nullable defValue: Boolean): Boolean {
-        return sharedPreferences.getBoolean(key, defValue) ?: return false
+        return sharedPreferences.getBoolean(key, defValue)
     }
 
     private fun setBoolean(key: String, @Nullable value: Boolean, commit: Boolean = false) {
