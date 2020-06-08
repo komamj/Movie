@@ -133,7 +133,6 @@ class HomeViewModel constructor(
         return homeModelList
     }
 
-
     private fun getString(@StringRes resId: Int): String {
         with(getApplication<Application>()) {
             return getString(resId)

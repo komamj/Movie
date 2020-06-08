@@ -1,2 +1,6 @@
+include ':peoplelibrary'
+include ':tvlibrary'
+include ':movielibrary'
+include ':securitylibrary'
 rootProject.name='Movie'
 include ':app', ':commonlibrary', ':authlibrary', ':testlibrary', ':storagelibrary'

@@ -17,7 +17,7 @@
 package com.koma.movie
 
 import android.os.StrictMode
-import androidx.multidex.MultiDexApplication
+import com.koma.commonlibrary.base.BaseApplication
 import com.koma.commonlibrary.di.ApplicationModule
 import com.koma.movie.di.AppComponent
 import com.koma.movie.di.DaggerAppComponent
@@ -27,7 +27,7 @@ import com.koma.movie.util.ReleaseTree
 import leakcanary.AppWatcher
 import timber.log.Timber
 
-class MovieApplication : MultiDexApplication() {
+class MovieApplication : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
 
