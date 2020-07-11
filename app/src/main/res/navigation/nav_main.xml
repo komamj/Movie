@@ -8,14 +8,5 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.koma.movie.MainFragment"
-        android:label="@string/app_name">
-        <action
-            android:id="@+id/showCategoryMovie"
-            app:destination="@id/movieCategoryFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/movieCategoryFragment"
-        android:name="com.koma.movie.home.MovieCategoryFragment"
-        android:label="@string/app_name" />
+        android:label="@string/app_name"/>
 </navigation>

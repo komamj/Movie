@@ -22,18 +22,22 @@ import com.koma.authlibrary.data.source.AuthRepository
 import com.koma.authlibrary.data.source.AuthRepositoryImp
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Singleton
 
 @Module
-class AuthRepositoryModule {
-    @AuthScoped
+@InstallIn(ApplicationComponent::class)
+object AuthRepositoryModule {
+    @Singleton
     @Provides
     fun provideAuthRepository(repository: AuthRepositoryImp): AuthRepository = repository
 
-    @AuthScoped
+    @Singleton
     @Provides
     fun provideFirebaseAuth() = FirebaseAuth.getInstance()
 
-    @AuthScoped
+    @Singleton
     @Provides
     fun provideFirebaseDatabase() = FirebaseDatabase.getInstance().reference
 }

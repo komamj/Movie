@@ -1,3 +1,6 @@
+include ':networklibrary'
+include ':imagelibrary'
+include ':loglibrary'
 include ':peoplelibrary'
 include ':tvlibrary'
 include ':movielibrary'

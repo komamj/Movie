@@ -21,29 +21,17 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.koma.authlibrary.R
-import com.koma.authlibrary.ViewModelFactory
 import com.koma.authlibrary.databinding.FragmentLoginBinding
-import com.koma.authlibrary.di.AuthRepositoryModule
-import com.koma.authlibrary.di.DaggerAuthComponent
 import com.koma.commonlibrary.base.BaseFragment
-import javax.inject.Inject
 import timber.log.Timber
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
     private lateinit var viewModel: LoginViewModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        DaggerAuthComponent.builder()
-            .authRepositoryModule(AuthRepositoryModule())
-            .build()
-            .inject(this)
-
-        viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         Timber.d("onAttach viewModel:$viewModel")
     }

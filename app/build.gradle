@@ -1,11 +1,19 @@
 apply plugin: 'com.android.application'
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+
+apply plugin: 'dagger.hilt.android.plugin'
+
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'io.fabric'
 
 apply from: '../shared_dependencies.gradle'
 apply from: '../test_dependencies.gradle'
+
+kapt {
+    correctErrorTypes true
+}
 
 android {
     compileSdkVersion defaultCompileSdkVersion as Integer
@@ -24,12 +32,9 @@ android {
 
         resValue "string", "ad_unit_id", "$ad_unit_id"
 
-        buildConfigField 'String', 'ENDPOINT', "\"${endpoint}\""
-        buildConfigField 'String', 'TMDB_API_KEY', "\"${tmdb_api_key}\""
-
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [
+                arguments += [
                         "room.schemaLocation"  : "$projectDir/schemas".toString(),
                         "room.incremental"     : "true",
                         "room.expandProjection": "true"]
@@ -39,9 +44,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    dataBinding {
-        enabled = true
-        enabledForTests = true
+    buildFeatures {
+        dataBinding = true
     }
 
     compileOptions {
@@ -66,6 +70,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation "androidx.multidex:multidex:$multidexVersion"
+
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
+
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 
@@ -81,15 +90,9 @@ dependencies {
     implementation "androidx.room:room-ktx:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
 
-    implementation "com.github.bumptech.glide:glide:$glideVersion"
-    kapt "com.github.bumptech.glide:compiler:$glideVersion"
-
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$interceptorVersion"
-
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
     implementation "pub.devrel:easypermissions:$permissionVersion"
 
@@ -105,9 +108,18 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
     implementation project(':commonlibrary')
-    implementation project(':authlibrary')
+    implementation project(':movielibrary')
+    implementation project(':tvlibrary')
+    implementation project(':peoplelibrary')
+    implementation project(':networklibrary')
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
 
     testImplementation "androidx.room:room-testing:$roomVersion"
+}
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xmaxerrs" << "500"
+    }
 }

@@ -16,47 +16,25 @@
 
 package com.koma.movie
 
-import android.os.StrictMode
+import android.content.Context
+import androidx.multidex.MultiDex
 import com.koma.commonlibrary.base.BaseApplication
-import com.koma.commonlibrary.di.ApplicationModule
-import com.koma.movie.di.AppComponent
-import com.koma.movie.di.DaggerAppComponent
-import com.koma.movie.di.RepositoryModule
-import com.koma.movie.util.DebugTree
-import com.koma.movie.util.ReleaseTree
+import dagger.hilt.android.HiltAndroidApp
 import leakcanary.AppWatcher
-import timber.log.Timber
 
+@HiltAndroidApp
 class MovieApplication : BaseApplication() {
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+
+        MultiDex.install(this)
+    }
+
     override fun onCreate() {
         super.onCreate()
 
-        appComponent = DaggerAppComponent.builder()
-            .applicationModule(ApplicationModule(this))
-            .repositoryModule(RepositoryModule())
-            .build()
-
         if (BuildConfig.DEBUG) {
-            Timber.plant(DebugTree())
-
-            enabledStrictMode()
-
             AppWatcher.config = AppWatcher.config.copy(watchFragmentViews = true)
-        } else {
-            Timber.plant(ReleaseTree())
         }
-    }
-
-    private fun enabledStrictMode() {
-        StrictMode.setThreadPolicy(
-            StrictMode.ThreadPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .build()
-        )
-    }
-
-    companion object {
-        lateinit var appComponent: AppComponent
     }
 }

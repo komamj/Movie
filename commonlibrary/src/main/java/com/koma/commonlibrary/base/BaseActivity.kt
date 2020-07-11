@@ -17,6 +17,7 @@
 package com.koma.commonlibrary.base
 
 import android.os.Bundle
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -31,5 +32,6 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
         binding.lifecycleOwner = this
     }
 
+    @LayoutRes
     abstract fun getLayoutId(): Int
 }

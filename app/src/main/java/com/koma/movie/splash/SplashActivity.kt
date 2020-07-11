@@ -29,10 +29,12 @@ import com.koma.commonlibrary.base.BaseActivity
 import com.koma.movie.MainActivity
 import com.koma.movie.R
 import com.koma.movie.databinding.ActivitySplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import timber.log.Timber
 
+@AndroidEntryPoint
 class SplashActivity : BaseActivity<ActivitySplashBinding>(), EasyPermissions.PermissionCallbacks {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

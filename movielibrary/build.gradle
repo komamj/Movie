@@ -1,9 +1,21 @@
 apply plugin: 'com.android.library'
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.alibaba.arouter'
+
+apply plugin: 'dagger.hilt.android.plugin'
+
 apply from: '../shared_dependencies.gradle'
 apply from: '../test_dependencies.gradle'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+        arg("AROUTER_GENERATE_DOC", "enable")
+    }
+}
 
 android {
     compileSdkVersion defaultCompileSdkVersion as Integer
@@ -15,13 +27,14 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField 'String', 'ENDPOINT', "\"${endpoint}\""
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    dataBinding {
-        enabled = true
-        enabledForTests = true
+    buildFeatures {
+        dataBinding = true
     }
 
     compileOptions {
@@ -43,4 +56,26 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation "com.alibaba:arouter-api:$routerApiVersion"
+    kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
+
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
+
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$interceptorVersion"
+
+    implementation project(':commonlibrary')
+    implementation project(':imagelibrary')
+    implementation project(':networklibrary')
+
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
 }

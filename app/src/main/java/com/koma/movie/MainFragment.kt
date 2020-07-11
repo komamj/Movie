@@ -22,7 +22,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.koma.commonlibrary.base.BaseFragment
 import com.koma.movie.databinding.FragmentMainBinding
 import com.koma.movie.widget.ZoomOutPageTransformer
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

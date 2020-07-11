@@ -16,14 +16,11 @@
 
 package com.koma.movie
 
-import androidx.appcompat.widget.Toolbar
 import com.koma.commonlibrary.base.BaseActivity
 import com.koma.movie.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun getLayoutId() = R.layout.activity_main
-
-    override fun setSupportActionBar(toolbar: Toolbar?) {
-        super.setSupportActionBar(toolbar)
-    }
 }

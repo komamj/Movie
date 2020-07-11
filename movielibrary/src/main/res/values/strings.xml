@@ -1,0 +1,10 @@
+<resources>
+    <string name="popular_movie">热门电影排行榜</string>
+    <string name="popular_movie_description">大家都在看的最新热门电影</string>
+    <string name="now_playing_movie">新发行的电影</string>
+    <string name="now_playing_movie_description">不能错过的最新大片</string>
+    <string name="upcoming_movie">即将上映热门电影排行榜</string>
+    <string name="upcoming_movie_description">大家都已订阅最新热门电影</string>
+    <string name="top_rated_movie">最高评分电影排行榜</string>
+    <string name="top_rated_movie_description">大家都在看的最高评分电影</string>
+</resources>

@@ -17,13 +17,36 @@
 package com.koma.commonlibrary.base
 
 import android.app.Application
-import android.content.Context
-import androidx.multidex.MultiDex
+import android.os.StrictMode
+import com.alibaba.android.arouter.launcher.ARouter
+import com.koma.commonlibrary.BuildConfig
+import com.koma.loglibrary.DebugTree
+import com.koma.loglibrary.ReleaseTree
+import timber.log.Timber
 
 open class BaseApplication : Application() {
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
+    override fun onCreate() {
+        super.onCreate()
 
-        MultiDex.install(this)
+        if (BuildConfig.DEBUG) {
+            Timber.plant(DebugTree())
+
+            ARouter.openLog()
+            ARouter.openDebug()
+
+            enabledStrictMode()
+        } else {
+            Timber.plant(ReleaseTree())
+        }
+        ARouter.init(this)
+    }
+
+    private fun enabledStrictMode() {
+        StrictMode.setThreadPolicy(
+            StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .build()
+        )
     }
 }

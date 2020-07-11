@@ -16,7 +16,7 @@
 
 package com.koma.movie.splash
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import com.koma.movie.data.source.MovieRepository
 
-class SplashViewModel constructor(private val repository: MovieRepository) : ViewModel()
+class SplashViewModel @ViewModelInject constructor() : ViewModel()

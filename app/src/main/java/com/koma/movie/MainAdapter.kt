@@ -18,7 +18,7 @@ package com.koma.movie
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.koma.movie.home.HomeFragment
+import com.koma.feature.movie.MovieWrapperFragment
 
 class MainAdapter constructor(fragment: Fragment) :
     FragmentStateAdapter(fragment) {
@@ -27,13 +27,13 @@ class MainAdapter constructor(fragment: Fragment) :
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             1 -> {
-                HomeFragment()
+                MovieWrapperFragment()
             }
             2 -> {
-                HomeFragment()
+                MovieWrapperFragment()
             }
             else -> {
-                HomeFragment()
+                MovieWrapperFragment()
             }
         }
     }

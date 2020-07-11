@@ -1,5 +1,5 @@
 buildscript {
-    apply from: 'version.gradle'
+    apply from: 'versions.gradle'
 
     repositories {
         google()
@@ -9,8 +9,15 @@ buildscript {
 
     dependencies {
         classpath "com.android.tools.build:gradle:$gradlePluginVersion"
+
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
+
+        classpath "com.alibaba:arouter-register:$routerRegisterVersion"
+
         classpath "com.google.gms:google-services:$googleServicesVersion"
+
         classpath "io.fabric.tools:gradle:$fabricGradleVersion"
     }
 }

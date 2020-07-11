@@ -22,14 +22,14 @@ import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.koma.authlibrary.data.entities.User
-import com.koma.authlibrary.di.AuthScoped
 import com.koma.commonlibrary.data.entities.Result
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
-@AuthScoped
+@Singleton
 class AuthRepositoryImp @Inject constructor(
     @NonNull private val auth: FirebaseAuth,
     @NonNull private val database: DatabaseReference

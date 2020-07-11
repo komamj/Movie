@@ -17,32 +17,15 @@
 package com.koma.commonlibrary.binding
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.widget.ContentLoadingProgressBar
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.koma.commonlibrary.util.GlideApp
-
-private const val IMAGE_URL = "http://image.tmdb.org/t/p/w342"
-
-@BindingAdapter(value = ["imageUrl"])
-fun bindImageUrl(view: ImageView, imageUrl: String?) {
-    GlideApp.with(view.context)
-        .load("$IMAGE_URL$imageUrl")
-        .placeholder(ColorDrawable(Color.GRAY))
-        .transition(DrawableTransitionOptions.withCrossFade())
-        .thumbnail(0.1f)
-        .into(view)
-}
 
 @BindingAdapter("isGone")
 fun bindIsGone(view: View, isGone: Boolean) {
