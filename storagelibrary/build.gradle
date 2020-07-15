@@ -2,6 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
+apply from: '../shared_dependencies.gradle'
+apply from: '../test_dependencies.gradle'
+
 android {
     compileSdkVersion defaultCompileSdkVersion as Integer
     buildToolsVersion defaultBuildToolsVersion as String
@@ -19,6 +22,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     buildTypes {

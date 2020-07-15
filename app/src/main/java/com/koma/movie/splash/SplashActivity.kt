@@ -26,12 +26,15 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.formats.NativeAdOptions
 import com.koma.commonlibrary.base.BaseActivity
+import com.koma.movie.MainActivity
 import com.koma.movie.R
 import com.koma.movie.databinding.ActivitySplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import timber.log.Timber
 
+@AndroidEntryPoint
 class SplashActivity : BaseActivity<ActivitySplashBinding>(), EasyPermissions.PermissionCallbacks {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,10 +70,16 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(), EasyPermissions.Pe
 
     private fun initPermissions() {
         if (isPermissionGranted()) {
-            // todo has permission
+            launchMainPage()
         } else {
             requestPermission()
         }
+    }
+
+    private fun launchMainPage() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
     private fun requestPermission() {
@@ -116,7 +125,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(), EasyPermissions.Pe
     }
 
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
-        // todo onPermissionsGranted
+        launchMainPage()
     }
 
     override fun onResume() {
