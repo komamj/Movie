@@ -27,6 +27,8 @@ android {
         versionCode 1
         versionName "1.0"
 
+        resourcePrefix "movie_"
+
         buildConfigField 'String', 'ENDPOINT', "\"${endpoint}\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
