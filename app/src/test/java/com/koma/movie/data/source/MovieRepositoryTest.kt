@@ -17,7 +17,7 @@
 package com.koma.movie.data.source
 
 import com.google.common.truth.Truth.assertThat
-import com.koma.commonlibrary.data.entities.Result
+import com.koma.common.data.entities.Result
 import com.koma.movie.data.entities.Movie
 import com.koma.movie.data.source.local.LocalDataSource
 import com.koma.movie.data.source.remote.RemoteDataSource

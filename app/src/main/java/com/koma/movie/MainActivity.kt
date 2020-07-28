@@ -16,7 +16,7 @@
 
 package com.koma.movie
 
-import com.koma.commonlibrary.base.BaseActivity
+import com.koma.common.base.BaseActivity
 import com.koma.movie.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

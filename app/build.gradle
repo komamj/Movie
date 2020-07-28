@@ -107,11 +107,11 @@ dependencies {
 
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
-    implementation project(':commonlibrary')
-    implementation project(':movielibrary')
-    implementation project(':tvlibrary')
-    implementation project(':peoplelibrary')
-    implementation project(':networklibrary')
+    implementation project(':common')
+    implementation project(':movie')
+    implementation project(':tv')
+    implementation project(':people')
+    implementation project(':network')
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
 

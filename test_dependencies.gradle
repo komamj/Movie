@@ -21,7 +21,7 @@ dependencies {
     testImplementation "org.mockito:mockito-core:$mockitoCoreVersion"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
     testImplementation "com.squareup.retrofit2:retrofit-mock:$retrofitVersion"
-    testImplementation project(':testlibrary')
+    testImplementation project(':test')
 
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
     androidTestImplementation "com.google.truth:truth:$googletruthVersion"
@@ -32,5 +32,5 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-android:$mockitoAndroidVersion"
     androidTestImplementation "com.squareup.retrofit2:retrofit-mock:$retrofitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
-    androidTestImplementation project(':testlibrary')
+    androidTestImplementation project(':test')
 }

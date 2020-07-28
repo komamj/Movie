@@ -19,7 +19,7 @@ package com.koma.movie
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.koma.commonlibrary.base.BaseFragment
+import com.koma.common.base.BaseFragment
 import com.koma.movie.databinding.FragmentMainBinding
 import com.koma.movie.widget.ZoomOutPageTransformer
 import dagger.hilt.android.AndroidEntryPoint

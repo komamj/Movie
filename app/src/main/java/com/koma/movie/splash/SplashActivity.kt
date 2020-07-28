@@ -25,7 +25,7 @@ import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.formats.NativeAdOptions
-import com.koma.commonlibrary.base.BaseActivity
+import com.koma.common.base.BaseActivity
 import com.koma.movie.MainActivity
 import com.koma.movie.R
 import com.koma.movie.databinding.ActivitySplashBinding

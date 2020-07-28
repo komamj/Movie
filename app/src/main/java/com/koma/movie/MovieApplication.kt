@@ -18,7 +18,7 @@ package com.koma.movie
 
 import android.content.Context
 import androidx.multidex.MultiDex
-import com.koma.commonlibrary.base.BaseApplication
+import com.koma.common.base.BaseApplication
 import dagger.hilt.android.HiltAndroidApp
 import leakcanary.AppWatcher
 
