@@ -13,10 +13,10 @@ class GlobalPathReplaceService : PathReplaceService {
     }
 
     override fun forString(path: String): String {
-        TODO("Not yet implemented")
+        return path
     }
 
     override fun forUri(uri: Uri): Uri {
-        TODO("Not yet implemented")
+        return uri
     }
 }
