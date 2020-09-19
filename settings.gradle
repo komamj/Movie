@@ -1,3 +1,4 @@
+include ':database'
 rootProject.name = 'Movie'
 include ':network'
 include ':image'

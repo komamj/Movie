@@ -24,6 +24,8 @@ android {
 
         buildConfigField 'String', 'TMDB_API_KEY', "\"${tmdb_api_key}\""
 
+        buildConfigField 'String', 'ENDPOINT', "\"${endpoint}\""
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
