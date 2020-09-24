@@ -46,20 +46,20 @@ class MovieWrapperViewModel @ViewModelInject constructor(
     val errorMessage: LiveData<Event<String>>
         get() = _errorMessage
 
-    private val _movie = MutableLiveData<List<Movie>>()
+   /* private val _movie = MutableLiveData<List<Movie>>()
     val movie: LiveData<List<Movie>>
-        get() = _movie
+        get() = _movie*/
 
     private val _homeModelList = MutableLiveData<List<MovieWrapper>>()
     val homeModelList: LiveData<List<MovieWrapper>>
         get() = _homeModelList
 
     fun start() {
+        _isLoading.postValue(true)
+
         viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
             Timber.e("error:${throwable.message}")
         }) {
-            _isLoading.postValue(true)
-
             val popularMovie = async {
                 repository.getPopularMovie(PAGE, true)
             }
