@@ -19,8 +19,9 @@ package com.koma.app
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.koma.common.base.BaseFragment
 import com.koma.app.databinding.FragmentMainBinding
+import com.koma.app.widget.ZoomOutPageTransformer
+import com.koma.common.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

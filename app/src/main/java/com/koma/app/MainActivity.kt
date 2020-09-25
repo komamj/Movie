@@ -16,8 +16,8 @@
 
 package com.koma.app
 
-import com.koma.common.base.BaseActivity
 import com.koma.app.databinding.ActivityMainBinding
+import com.koma.common.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

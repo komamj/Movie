@@ -23,12 +23,12 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.koma.common.base.BaseFragment
-import com.koma.feature.movie.databinding.FragmentMovieWrapperBinding
+import com.koma.feature.movie.databinding.MovieFragmentMovieWrapperBinding
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint
-class MovieWrapperFragment : BaseFragment<FragmentMovieWrapperBinding>() {
+class MovieWrapperFragment : BaseFragment<MovieFragmentMovieWrapperBinding>() {
     private lateinit var adapter: MovieWrapperAdapter
 
     private lateinit var viewModel: MovieWrapperViewModel
@@ -66,5 +66,5 @@ class MovieWrapperFragment : BaseFragment<FragmentMovieWrapperBinding>() {
         }
     }
 
-    override fun getLayoutId() = R.layout.fragment_movie_wrapper
+    override fun getLayoutId() = R.layout.movie_fragment_movie_wrapper
 }

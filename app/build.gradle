@@ -112,6 +112,7 @@ dependencies {
     implementation project(':tv')
     implementation project(':people')
     implementation project(':network')
+    implementation project(':database')
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
 

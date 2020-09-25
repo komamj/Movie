@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.koma.router.base
+package com.koma.database.data.source.local
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import com.alibaba.android.arouter.launcher.ARouter
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import com.koma.database.data.entities.Movie
+import com.koma.database.data.entities.People
+import com.koma.database.data.entities.Tv
 
-class BaseRouterAndroidViewModel constructor(application: Application) :
-    AndroidViewModel(application) {
-    init {
-        ARouter.getInstance().inject(this)
-    }
+@Database(entities = [Movie::class, People::class, Tv::class], version = 1, exportSchema = true)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun movieDao(): MovieDao
 }

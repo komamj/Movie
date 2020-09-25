@@ -17,22 +17,25 @@
 package com.koma.feature.movie.binding
 
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.koma.database.data.entities.Movie
+import com.koma.feature.movie.MovieWrapperAdapter
+import com.koma.feature.movie.data.entities.MovieWrapper
 
-@BindingAdapter("movieList")
-fun bindMovieList(recyclerView: RecyclerView, movieList: List<Movie>) {
-    /*if (recyclerView.adapter == null) {
+@BindingAdapter("movieWrapperList")
+fun bindMovieWrapperList(recyclerView: RecyclerView, movieList: List<MovieWrapper>) {
+    if (recyclerView.adapter == null) {
         with(recyclerView) {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(recyclerView.context).apply {
                 orientation = LinearLayoutManager.HORIZONTAL
             }
             itemAnimator = DefaultItemAnimator()
-            adapter = MovieCategoryAdapter()
+            adapter = MovieWrapperAdapter()
         }
-    }*/
-    /*if (recyclerView.adapter is MovieCategoryAdapter) {
-        (recyclerView.adapter as MovieCategoryAdapter).submitList(movieList)
-    }*/
+    }
+    if (recyclerView.adapter is MovieWrapperAdapter) {
+        (recyclerView.adapter as MovieWrapperAdapter).submitList(movieList)
+    }
 }

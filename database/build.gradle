@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'dagger.hilt.android.plugin'
+
 android {
     compileSdkVersion defaultCompileSdkVersion as Integer
     buildToolsVersion defaultBuildToolsVersion as String
@@ -38,6 +40,9 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+
     implementation "androidx.room:room-runtime:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
@@ -45,4 +50,7 @@ dependencies {
     implementation "com.google.code.gson:gson:$gsonVersion"
 
     implementation project(':log')
+
+    testImplementation project(':test')
+    testImplementation "androidx.room:room-testing:$roomVersion"
 }

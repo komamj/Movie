@@ -39,7 +39,7 @@ subprojects {
         kotlin {
             target "**/*.kt"
             ktlint().userData([
-                    'max_line_length': '100',
+                    'max_line_length': '120',
             ])
             licenseHeaderFile project.rootProject.file('copyright.kt')
         }

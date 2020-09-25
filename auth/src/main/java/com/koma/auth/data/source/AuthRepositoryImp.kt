@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.koma.auth.data.entities.User
-import com.koma.common.data.entities.Result
+import com.koma.common.data.entities.Resource
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +38,7 @@ class AuthRepositoryImp @Inject constructor(
     override suspend fun login(
         email: String,
         password: String
-    ): Result<FirebaseUser?> {
+    ): Resource<FirebaseUser?> {
         return withContext(context = Dispatchers.IO) {
             try {
                 auth.signInWithEmailAndPassword(email, password).await()
@@ -46,9 +46,9 @@ class AuthRepositoryImp @Inject constructor(
                 user?.run {
                     persistenceUser(buildUser(user))
                 }
-                return@withContext Result.Success(user)
+                return@withContext Resource.Success(user)
             } catch (exception: FirebaseAuthException) {
-                return@withContext Result.Error(exception)
+                return@withContext Resource.Error(exception)
             }
         }
     }

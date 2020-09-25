@@ -16,7 +16,7 @@
 
 package com.koma.feature.movie.data.source
 
-import com.koma.common.data.entities.Result
+import com.koma.common.data.entities.Resource
 import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.source.local.LocalDataSource
 import com.koma.feature.movie.data.source.remote.RemoteDataSource
@@ -28,10 +28,10 @@ class MovieRepositoryImp @Inject constructor(
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource
 ) : MovieRepository {
-    override suspend fun getPopularMovie(page: Int, forceUpdate: Boolean): Result<List<Movie>> {
+    override suspend fun getPopularMovie(page: Int, forceUpdate: Boolean): Resource<List<Movie>> {
         return if (forceUpdate) {
             val result = remoteDataSource.getPopularMovie(page)
-            if (result is Result.Success) {
+            if (result is Resource.Success) {
                 result.data?.run {
                     localDataSource.saveMovie(this)
                 }
@@ -42,10 +42,10 @@ class MovieRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getTopRatedMovie(page: Int, forceUpdate: Boolean): Result<List<Movie>> {
+    override suspend fun getTopRatedMovie(page: Int, forceUpdate: Boolean): Resource<List<Movie>> {
         return if (forceUpdate) {
             val result = remoteDataSource.getTopRatedMovie(page)
-            if (result is Result.Success) {
+            if (result is Resource.Success) {
                 result.data?.run {
                     localDataSource.saveMovie(this)
                 }
@@ -56,10 +56,13 @@ class MovieRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getNowPlayingMovie(page: Int, forceUpdate: Boolean): Result<List<Movie>> {
+    override suspend fun getNowPlayingMovie(
+        page: Int,
+        forceUpdate: Boolean
+    ): Resource<List<Movie>> {
         return if (forceUpdate) {
             val result = remoteDataSource.getNowPlayingMovie(page)
-            if (result is Result.Success) {
+            if (result is Resource.Success) {
                 result.data?.run {
                     localDataSource.saveMovie(this)
                 }
@@ -70,10 +73,10 @@ class MovieRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getUpcomingMovie(page: Int, forceUpdate: Boolean): Result<List<Movie>> {
+    override suspend fun getUpcomingMovie(page: Int, forceUpdate: Boolean): Resource<List<Movie>> {
         return if (forceUpdate) {
             val result = remoteDataSource.getUpcomingMovie(page)
-            if (result is Result.Success) {
+            if (result is Resource.Success) {
                 result.data?.run {
                     localDataSource.saveMovie(this)
                 }
@@ -87,7 +90,10 @@ class MovieRepositoryImp @Inject constructor(
     /**
      * Get a list of similar movies
      */
-    override suspend fun getSimilarMovie(movieId: Int, forceUpdate: Boolean): Result<List<Movie>> {
+    override suspend fun getSimilarMovie(
+        movieId: Int,
+        forceUpdate: Boolean
+    ): Resource<List<Movie>> {
         TODO("Not yet implemented")
     }
 
@@ -97,7 +103,7 @@ class MovieRepositoryImp @Inject constructor(
     override suspend fun getRecommendedMovie(
         movieId: Int,
         forceUpdate: Boolean
-    ): Result<List<Movie>> {
+    ): Resource<List<Movie>> {
         TODO("Not yet implemented")
     }
 
@@ -109,7 +115,10 @@ class MovieRepositoryImp @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override suspend fun searchMovie(keyword: String, includeAdult: Boolean): Result<List<Movie>> {
+    override suspend fun searchMovie(
+        keyword: String,
+        includeAdult: Boolean
+    ): Resource<List<Movie>> {
         TODO("Not yet implemented")
     }
 }

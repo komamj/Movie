@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.koma.feature.movie.data.entities.MovieWrapper
-import com.koma.feature.movie.databinding.ItemMovieWrapperBinding
+import com.koma.feature.movie.databinding.MovieItemMovieWrapperBinding
 
 class MovieWrapperAdapter :
     ListAdapter<MovieWrapper, MovieWrapperAdapter.HomeVH>(HomeDiffCallback()) {
@@ -32,7 +32,7 @@ class MovieWrapperAdapter :
         return HomeVH(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.item_movie_wrapper,
+                R.layout.movie_item_movie_wrapper,
                 parent,
                 false
             )
@@ -56,7 +56,7 @@ class MovieWrapperAdapter :
         }
     }
 
-    class HomeVH(val binding: ItemMovieWrapperBinding) : RecyclerView.ViewHolder(binding.root)
+    class HomeVH(val binding: MovieItemMovieWrapperBinding) : RecyclerView.ViewHolder(binding.root)
 
     private class HomeDiffCallback : DiffUtil.ItemCallback<MovieWrapper>() {
         override fun areItemsTheSame(oldItem: MovieWrapper, newItem: MovieWrapper): Boolean {

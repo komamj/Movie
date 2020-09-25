@@ -49,4 +49,7 @@ data class Movie(
     @ColumnInfo(name = "page")
     @SerializedName("page")
     val page: Int
-)
+) {
+    @ColumnInfo(name = "type")
+    var type: String = ""
+}

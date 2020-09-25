@@ -16,58 +16,59 @@
 
 package com.koma.feature.movie.data.source.local
 
-import com.koma.common.data.entities.Result
+import com.koma.common.data.entities.Resource
 import com.koma.database.data.entities.Movie
+import com.koma.database.data.source.local.MovieDao
 import com.koma.feature.movie.data.source.MovieDataSource
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(
     private val preferenceHelper: PreferenceHelper,
     private val movieDao: MovieDao,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : MovieDataSource {
-    override suspend fun getPopularMovie(page: Int): Result<List<Movie>> =
+    override suspend fun getPopularMovie(page: Int): Resource<List<Movie>> =
         withContext(dispatcher) {
             return@withContext try {
                 val movieList = movieDao.getMovie(page)
-                Result.Success(movieList)
+                Resource.Success(movieList)
             } catch (e: Exception) {
-                Result.Error(e)
+                Resource.Error(e)
             }
         }
 
-    override suspend fun getTopRatedMovie(page: Int): Result<List<Movie>> =
+    override suspend fun getTopRatedMovie(page: Int): Resource<List<Movie>> =
         withContext(dispatcher) {
             return@withContext try {
                 val movieList = movieDao.getMovie(page)
-                Result.Success(movieList)
+                Resource.Success(movieList)
             } catch (e: Exception) {
-                Result.Error(e)
+                Resource.Error(e)
             }
         }
 
-    override suspend fun getNowPlayingMovie(page: Int): Result<List<Movie>> {
+    override suspend fun getNowPlayingMovie(page: Int): Resource<List<Movie>> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getUpcomingMovie(page: Int): Result<List<Movie>> {
+    override suspend fun getUpcomingMovie(page: Int): Resource<List<Movie>> {
         TODO("Not yet implemented")
     }
 
     /**
      * Get a list of similar movies
      */
-    override suspend fun getSimilarMovie(movieId: Int): Result<List<Movie>> {
+    override suspend fun getSimilarMovie(movieId: Int): Resource<List<Movie>> {
         TODO("Not yet implemented")
     }
 
     /**
      * Get a list of recommended movies for a movie.
      */
-    override suspend fun getRecommendedMovie(movieId: Int): Result<List<Movie>> {
+    override suspend fun getRecommendedMovie(movieId: Int): Resource<List<Movie>> {
         TODO("Not yet implemented")
     }
 

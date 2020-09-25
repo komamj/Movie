@@ -16,27 +16,30 @@
 
 package com.koma.feature.movie.data.source
 
-import com.koma.common.data.entities.Result
+import com.koma.common.data.entities.Resource
 import com.koma.database.data.entities.Movie
 
 interface MovieRepository {
-    suspend fun getPopularMovie(page: Int, forceUpdate: Boolean = false): Result<List<Movie>>
+    suspend fun getPopularMovie(page: Int, forceUpdate: Boolean = false): Resource<List<Movie>>
 
-    suspend fun getTopRatedMovie(page: Int, forceUpdate: Boolean = false): Result<List<Movie>>
+    suspend fun getTopRatedMovie(page: Int, forceUpdate: Boolean = false): Resource<List<Movie>>
 
-    suspend fun getNowPlayingMovie(page: Int, forceUpdate: Boolean = false): Result<List<Movie>>
+    suspend fun getNowPlayingMovie(page: Int, forceUpdate: Boolean = false): Resource<List<Movie>>
 
-    suspend fun getUpcomingMovie(page: Int, forceUpdate: Boolean = false): Result<List<Movie>>
+    suspend fun getUpcomingMovie(page: Int, forceUpdate: Boolean = false): Resource<List<Movie>>
 
     /**
      * Get a list of similar movies
      */
-    suspend fun getSimilarMovie(movieId: Int, forceUpdate: Boolean = false): Result<List<Movie>>
+    suspend fun getSimilarMovie(movieId: Int, forceUpdate: Boolean = false): Resource<List<Movie>>
 
     /**
      * Get a list of recommended movies for a movie.
      */
-    suspend fun getRecommendedMovie(movieId: Int, forceUpdate: Boolean = false): Result<List<Movie>>
+    suspend fun getRecommendedMovie(
+        movieId: Int,
+        forceUpdate: Boolean = false
+    ): Resource<List<Movie>>
 
     suspend fun getImages(movieId: Int)
 
@@ -45,5 +48,5 @@ interface MovieRepository {
     suspend fun searchMovie(
         keyword: String,
         includeAdult: Boolean = true
-    ): Result<List<Movie>>
+    ): Resource<List<Movie>>
 }

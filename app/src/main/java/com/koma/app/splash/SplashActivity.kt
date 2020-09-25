@@ -25,10 +25,10 @@ import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.formats.NativeAdOptions
-import com.koma.common.base.BaseActivity
 import com.koma.app.MainActivity
 import com.koma.app.R
 import com.koma.app.databinding.ActivitySplashBinding
+import com.koma.common.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions

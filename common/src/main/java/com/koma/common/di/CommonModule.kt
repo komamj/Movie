@@ -14,15 +14,19 @@
  * limitations under the License.
  */
 
-package com.koma.router.base
+package com.koma.common.di
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import com.alibaba.android.arouter.launcher.ARouter
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Singleton
+import kotlinx.coroutines.Dispatchers
 
-class BaseRouterAndroidViewModel constructor(application: Application) :
-    AndroidViewModel(application) {
-    init {
-        ARouter.getInstance().inject(this)
-    }
+@Module
+@InstallIn(ApplicationComponent::class)
+class CommonModule {
+    @Provides
+    @Singleton
+    fun provideDispatcher() = Dispatchers.IO
 }

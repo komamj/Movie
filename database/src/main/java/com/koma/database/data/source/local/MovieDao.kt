@@ -14,15 +14,22 @@
  * limitations under the License.
  */
 
-package com.koma.router.base
+package com.koma.database.data.source.local
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import com.alibaba.android.arouter.launcher.ARouter
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.koma.database.data.entities.Movie
 
-class BaseRouterAndroidViewModel constructor(application: Application) :
-    AndroidViewModel(application) {
-    init {
-        ARouter.getInstance().inject(this)
-    }
+@Dao
+interface MovieDao {
+    @Query("SELECT * from movie where page = :page")
+    suspend fun getMovie(page: Int): List<Movie>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(movie: List<Movie>)
+
+    @Query("DELETE FROM movie")
+    suspend fun deleteAll()
 }

@@ -14,15 +14,27 @@
  * limitations under the License.
  */
 
-package com.koma.router.base
+package com.koma.app
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import com.alibaba.android.arouter.launcher.ARouter
+import android.content.Context
+import androidx.multidex.MultiDex
+import com.koma.common.base.BaseApplication
+import dagger.hilt.android.HiltAndroidApp
+import leakcanary.AppWatcher
 
-class BaseRouterAndroidViewModel constructor(application: Application) :
-    AndroidViewModel(application) {
-    init {
-        ARouter.getInstance().inject(this)
+@HiltAndroidApp
+class MainApplication : BaseApplication() {
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+
+        MultiDex.install(this)
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+
+        if (BuildConfig.DEBUG) {
+            AppWatcher.config = AppWatcher.config.copy(watchFragmentViews = true)
+        }
     }
 }

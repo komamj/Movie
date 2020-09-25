@@ -23,7 +23,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.koma.common.data.entities.Result
+import com.koma.common.data.entities.Resource
 import com.koma.common.util.Event
 import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.entities.MovieWrapper
@@ -83,15 +83,15 @@ class MovieWrapperViewModel @ViewModelInject constructor(
     }
 
     private suspend fun handleResult(
-        popularMovie: Deferred<Result<List<Movie>>>,
-        topRatedMovie: Deferred<Result<List<Movie>>>,
-        nowPlayingMovie: Deferred<Result<List<Movie>>>,
-        upcomingMovie: Deferred<Result<List<Movie>>>
+        popularMovie: Deferred<Resource<List<Movie>>>,
+        topRatedMovie: Deferred<Resource<List<Movie>>>,
+        nowPlayingMovie: Deferred<Resource<List<Movie>>>,
+        upcomingMovie: Deferred<Resource<List<Movie>>>
     ): List<MovieWrapper> {
         val homeModelList = mutableListOf<MovieWrapper>()
 
         when (val popularMovieResult = popularMovie.await()) {
-            is Result.Success -> {
+            is Resource.Success -> {
                 val homeModel = MovieWrapper(
                     getString(R.string.popular_movie),
                     getString(R.string.popular_movie_description),
@@ -101,7 +101,7 @@ class MovieWrapperViewModel @ViewModelInject constructor(
             }
         }
         when (val topRatedMovieResult = topRatedMovie.await()) {
-            is Result.Success -> {
+            is Resource.Success -> {
                 val homeModel = MovieWrapper(
                     getString(R.string.top_rated_movie),
                     getString(R.string.top_rated_movie_description),
@@ -111,7 +111,7 @@ class MovieWrapperViewModel @ViewModelInject constructor(
             }
         }
         when (val nowPlayingMovieResult = nowPlayingMovie.await()) {
-            is Result.Success -> {
+            is Resource.Success -> {
                 val homeModel = MovieWrapper(
                     getString(R.string.now_playing_movie),
                     getString(R.string.now_playing_movie_description),
@@ -121,7 +121,7 @@ class MovieWrapperViewModel @ViewModelInject constructor(
             }
         }
         when (val upcomingMovieResult = upcomingMovie.await()) {
-            is Result.Success -> {
+            is Resource.Success -> {
                 val homeModel = MovieWrapper(
                     getString(R.string.upcoming_movie),
                     getString(R.string.upcoming_movie_description),

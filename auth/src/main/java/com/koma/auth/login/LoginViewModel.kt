@@ -21,7 +21,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.koma.auth.data.source.AuthRepository
-import com.koma.common.data.entities.Result
+import com.koma.common.data.entities.Resource
 import com.koma.common.util.Event
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -41,11 +41,11 @@ class LoginViewModel constructor(private val repository: AuthRepository) :
 
         viewModelScope.launch {
             val firebaseUser = when (val result = repository.login(email, password)) {
-                is Result.Success -> {
+                is Resource.Success -> {
                     _authResult.postValue(Event(true))
                     result.data
                 }
-                is Result.Error -> {
+                is Resource.Error -> {
                     Timber.e(result.exception)
 
                     _authResult.postValue(Event(true))

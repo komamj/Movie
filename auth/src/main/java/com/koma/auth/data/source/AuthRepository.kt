@@ -18,10 +18,10 @@ package com.koma.auth.data.source
 
 import com.google.firebase.auth.FirebaseUser
 import com.koma.auth.data.entities.User
-import com.koma.common.data.entities.Result
+import com.koma.common.data.entities.Resource
 
 interface AuthRepository {
-    suspend fun login(email: String, password: String): Result<FirebaseUser?>
+    suspend fun login(email: String, password: String): Resource<FirebaseUser?>
 
     fun persistenceUser(user: User)
 
