@@ -16,6 +16,8 @@
 
 package com.koma.feature.movie.data.entities
 
+import com.koma.database.data.entities.Movie
+
 data class MovieWrapper(
     val title: String,
     val description: String,

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.koma.movie
+package com.koma.app
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

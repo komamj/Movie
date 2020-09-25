@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.koma.movie.widget
+package com.koma.app.widget
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2

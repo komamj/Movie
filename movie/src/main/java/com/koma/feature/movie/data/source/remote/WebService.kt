@@ -16,8 +16,8 @@
 
 package com.koma.feature.movie.data.source.remote
 
-import com.koma.feature.movie.data.entities.DataModel
-import com.koma.feature.movie.data.entities.Movie
+import com.koma.network.data.entities.DataModel
+import com.koma.database.data.entities.Movie
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path

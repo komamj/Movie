@@ -20,7 +20,7 @@ ext {
 
     kotlinVersion = '1.4.10'
 
-    coroutinesVersion = '1.3.8'
+    coroutinesVersion = '1.3.9'
 
     defaultCompileSdkVersion = 30
     defaultBuildToolsVersion = "30.0.1"
@@ -48,6 +48,7 @@ ext {
     permissionVersion = '3.0.0'
 
     glideVersion = '4.11.0'
+    gsonVersion = '2.8.6'
     lottieVersion = '3.4.1'
     retrofitVersion = '2.9.0'
     interceptorVersion = '4.7.2'
@@ -63,15 +64,15 @@ ext {
     // Firebase
     kotlinxCoroutinesPlayServicesVersion = '1.1.1'
     firebaseCoreVersion = '17.5.0'
-    firebaseAuthVersion = '19.3.2'
+    firebaseAuthVersion = '19.4.0'
     firebaseDatabaseVersion = '19.4.0'
     firebaseStorageVersion = '19.1.1'
     firebaseAdsVersion = '19.4.0'
 
     //unit test
     junitVersion = '4.13'
-    coroutinesTestVersion = '1.3.2'
-    mockitoCoreVersion = '2.25.0'
+    coroutinesTestVersion = '1.3.9'
+    mockitoCoreVersion = '3.5.11'
     mockitoKotlinVersion = '2.0.0-RC3'
     mockitoAndroidVersion = '2.25.0'
     xcoreVersion = '1.2.0'

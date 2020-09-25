@@ -25,7 +25,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.koma.common.data.entities.Result
 import com.koma.common.util.Event
-import com.koma.feature.movie.data.entities.Movie
+import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.entities.MovieWrapper
 import com.koma.feature.movie.data.source.MovieRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -46,9 +46,9 @@ class MovieWrapperViewModel @ViewModelInject constructor(
     val errorMessage: LiveData<Event<String>>
         get() = _errorMessage
 
-   /* private val _movie = MutableLiveData<List<Movie>>()
-    val movie: LiveData<List<Movie>>
-        get() = _movie*/
+    /* private val _movie = MutableLiveData<List<Movie>>()
+     val movie: LiveData<List<Movie>>
+         get() = _movie*/
 
     private val _homeModelList = MutableLiveData<List<MovieWrapper>>()
     val homeModelList: LiveData<List<MovieWrapper>>

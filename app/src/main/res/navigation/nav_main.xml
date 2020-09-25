@@ -7,6 +7,6 @@
     tools:ignore="UnusedNavigation">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.koma.movie.MainFragment"
+        android:name="com.koma.app.MainFragment"
         android:label="@string/app_name"/>
 </navigation>

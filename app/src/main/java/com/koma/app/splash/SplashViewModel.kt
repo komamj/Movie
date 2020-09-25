@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-package com.koma.feature.movie.data.entities
+package com.koma.app.splash
 
-import com.google.gson.annotations.SerializedName
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.ViewModel
 
-data class DataModel<T>(
-    @SerializedName("page")
-    val page: Int,
-    @SerializedName("results")
-    val data: List<T>?
-)
+class SplashViewModel @ViewModelInject constructor() : ViewModel()

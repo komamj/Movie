@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.koma.movie
+package com.koma.network.data.entities
 
-import com.koma.common.base.BaseActivity
-import com.koma.movie.databinding.ActivityMainBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.google.gson.annotations.SerializedName
 
-@AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>() {
-    override fun getLayoutId() = R.layout.activity_main
-}
+data class DataModel<T>(
+    @SerializedName("page")
+    val page: Int,
+    @SerializedName("results")
+    val data: List<T>?
+)

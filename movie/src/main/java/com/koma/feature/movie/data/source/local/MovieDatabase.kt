@@ -18,7 +18,7 @@ package com.koma.feature.movie.data.source.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.koma.feature.movie.data.entities.Movie
+import com.koma.database.data.entities.Movie
 
 @Database(
     version = 1,

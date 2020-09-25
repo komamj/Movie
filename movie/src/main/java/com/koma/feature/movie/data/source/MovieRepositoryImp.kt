@@ -17,7 +17,7 @@
 package com.koma.feature.movie.data.source
 
 import com.koma.common.data.entities.Result
-import com.koma.feature.movie.data.entities.Movie
+import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.source.local.LocalDataSource
 import com.koma.feature.movie.data.source.remote.RemoteDataSource
 import javax.inject.Inject
@@ -32,9 +32,9 @@ class MovieRepositoryImp @Inject constructor(
         return if (forceUpdate) {
             val result = remoteDataSource.getPopularMovie(page)
             if (result is Result.Success) {
-                /*result.data?.run {
+                result.data?.run {
                     localDataSource.saveMovie(this)
-                }*/
+                }
             }
             result
         } else {
@@ -46,9 +46,9 @@ class MovieRepositoryImp @Inject constructor(
         return if (forceUpdate) {
             val result = remoteDataSource.getTopRatedMovie(page)
             if (result is Result.Success) {
-                /*result.data?.run {
+                result.data?.run {
                     localDataSource.saveMovie(this)
-                }*/
+                }
             }
             result
         } else {
@@ -60,9 +60,9 @@ class MovieRepositoryImp @Inject constructor(
         return if (forceUpdate) {
             val result = remoteDataSource.getNowPlayingMovie(page)
             if (result is Result.Success) {
-                /*result.data?.run {
+                result.data?.run {
                     localDataSource.saveMovie(this)
-                }*/
+                }
             }
             result
         } else {
@@ -74,9 +74,9 @@ class MovieRepositoryImp @Inject constructor(
         return if (forceUpdate) {
             val result = remoteDataSource.getUpcomingMovie(page)
             if (result is Result.Success) {
-                /*result.data?.run {
+                result.data?.run {
                     localDataSource.saveMovie(this)
-                }*/
+                }
             }
             result
         } else {

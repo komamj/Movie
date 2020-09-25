@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.koma.movie.splash
+package com.koma.app.splash
 
 import android.Manifest
 import android.content.Intent
@@ -26,9 +26,9 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.formats.NativeAdOptions
 import com.koma.common.base.BaseActivity
-import com.koma.movie.MainActivity
-import com.koma.movie.R
-import com.koma.movie.databinding.ActivitySplashBinding
+import com.koma.app.MainActivity
+import com.koma.app.R
+import com.koma.app.databinding.ActivitySplashBinding
 import dagger.hilt.android.AndroidEntryPoint
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions

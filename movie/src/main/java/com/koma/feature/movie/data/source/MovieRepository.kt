@@ -17,7 +17,7 @@
 package com.koma.feature.movie.data.source
 
 import com.koma.common.data.entities.Result
-import com.koma.feature.movie.data.entities.Movie
+import com.koma.database.data.entities.Movie
 
 interface MovieRepository {
     suspend fun getPopularMovie(page: Int, forceUpdate: Boolean = false): Result<List<Movie>>

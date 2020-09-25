@@ -17,7 +17,7 @@
 package com.koma.feature.movie.data.source.remote
 
 import com.koma.common.data.entities.Result
-import com.koma.feature.movie.data.entities.Movie
+import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.source.MovieDataSource
 import javax.inject.Inject
 

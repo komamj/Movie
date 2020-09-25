@@ -14,9 +14,13 @@
  * limitations under the License.
  */
 
-package com.koma.movie.splash
+package com.koma.app
 
-import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.ViewModel
+import com.koma.common.base.BaseActivity
+import com.koma.app.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class SplashViewModel @ViewModelInject constructor() : ViewModel()
+@AndroidEntryPoint
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+    override fun getLayoutId() = R.layout.activity_main
+}

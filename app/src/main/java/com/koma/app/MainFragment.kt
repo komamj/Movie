@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package com.koma.movie
+package com.koma.app
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.koma.common.base.BaseFragment
-import com.koma.movie.databinding.FragmentMainBinding
-import com.koma.movie.widget.ZoomOutPageTransformer
+import com.koma.app.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

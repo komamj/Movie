@@ -17,18 +17,20 @@
 package com.koma.feature.movie.data.source.local
 
 import com.koma.common.data.entities.Result
-import com.koma.feature.movie.data.entities.Movie
+import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.source.MovieDataSource
-import javax.inject.Inject
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(
     private val preferenceHelper: PreferenceHelper,
-    private val movieDao: MovieDao
+    private val movieDao: MovieDao,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : MovieDataSource {
     override suspend fun getPopularMovie(page: Int): Result<List<Movie>> =
-        withContext(context = Dispatchers.IO) {
+        withContext(dispatcher) {
             return@withContext try {
                 val movieList = movieDao.getMovie(page)
                 Result.Success(movieList)
@@ -38,7 +40,7 @@ class LocalDataSource @Inject constructor(
         }
 
     override suspend fun getTopRatedMovie(page: Int): Result<List<Movie>> =
-        withContext(context = Dispatchers.IO) {
+        withContext(dispatcher) {
             return@withContext try {
                 val movieList = movieDao.getMovie(page)
                 Result.Success(movieList)
@@ -69,7 +71,7 @@ class LocalDataSource @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    suspend fun saveMovie(movie: List<Movie>) = withContext(context = Dispatchers.IO) {
+    suspend fun saveMovie(movie: List<Movie>) = withContext(dispatcher) {
         movieDao.insert(movie)
     }
 }

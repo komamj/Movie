@@ -76,6 +76,7 @@ dependencies {
     implementation project(':common')
     implementation project(':image')
     implementation project(':network')
+    implementation project(':database')
 
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "com.google.android.material:material:$materialVersion"

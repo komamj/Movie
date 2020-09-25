@@ -20,7 +20,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.koma.feature.movie.data.entities.Movie
+import com.koma.database.data.entities.Movie
 
 @Dao
 interface MovieDao {

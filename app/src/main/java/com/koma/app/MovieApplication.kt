@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.koma.movie
+package com.koma.app
 
 import android.content.Context
 import androidx.multidex.MultiDex

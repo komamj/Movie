@@ -18,7 +18,7 @@ package com.koma.feature.movie.binding
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.koma.feature.movie.data.entities.Movie
+import com.koma.database.data.entities.Movie
 
 @BindingAdapter("movieList")
 fun bindMovieList(recyclerView: RecyclerView, movieList: List<Movie>) {

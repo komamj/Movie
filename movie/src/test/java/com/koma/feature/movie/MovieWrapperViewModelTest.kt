@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import com.koma.common.data.entities.Result
-import com.koma.feature.movie.data.entities.Movie
+import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.source.MovieRepository
 import com.koma.test.LiveDataTestUtil
 import com.koma.test.MainCoroutineScopeRule
