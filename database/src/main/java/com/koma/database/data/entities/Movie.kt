@@ -22,12 +22,12 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "movie", indices = [Index(value = ["id", "page"], unique = true)])
+@Entity(tableName = "movie", indices = [Index(value = ["id"], unique = true)])
 data class Movie(
     @PrimaryKey
     @ColumnInfo(name = "id")
     @SerializedName("id")
-    val id: Int,
+    val id: String,
     @ColumnInfo(name = "image_url")
     @SerializedName("poster_path")
     val imageUrl: String?,
@@ -45,10 +45,7 @@ data class Movie(
     val title: String,
     @ColumnInfo(name = "backdrop_path")
     @SerializedName("backdrop_path")
-    val backdropUrl: String?,
-    @ColumnInfo(name = "page")
-    @SerializedName("page")
-    val page: Int
+    val backdropUrl: String?
 ) {
     @ColumnInfo(name = "type")
     var type: String = ""

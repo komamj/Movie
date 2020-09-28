@@ -5,6 +5,8 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.alibaba.arouter'
 
 kapt {
+    correctErrorTypes = true
+    useBuildCache = true
     arguments {
         arg("AROUTER_MODULE_NAME", project.getName())
         arg("AROUTER_GENERATE_DOC", "enable")

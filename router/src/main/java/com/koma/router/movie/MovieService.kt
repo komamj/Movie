@@ -16,6 +16,9 @@
 
 package com.koma.router.movie
 
+import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.template.IProvider
 
-interface MovieService : IProvider
+interface MovieService : IProvider {
+    fun provideMovieFragment(): Fragment
+}

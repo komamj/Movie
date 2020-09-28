@@ -4,6 +4,15 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'dagger.hilt.android.plugin'
 
+kapt {
+    correctErrorTypes = true
+    useBuildCache = true
+    arguments {
+        arg("room.schemaLocation", "$projectDir/schemas".toString())
+        arg("room.incremental", "true")
+    }
+}
+
 android {
     compileSdkVersion defaultCompileSdkVersion as Integer
     buildToolsVersion defaultBuildToolsVersion as String

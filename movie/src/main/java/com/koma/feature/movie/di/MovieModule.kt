@@ -16,35 +16,23 @@
 
 package com.koma.feature.movie.di
 
-import com.koma.feature.movie.BuildConfig
 import com.koma.feature.movie.data.source.MovieRepository
 import com.koma.feature.movie.data.source.MovieRepositoryImp
 import com.koma.feature.movie.data.source.remote.WebService
+import com.koma.network.di.CommonRetrofit
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import javax.inject.Singleton
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
 class MovieModule {
     @Singleton
     @Provides
-    fun provideRetrofit(client: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(BuildConfig.ENDPOINT)
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideWebService(retrofit: Retrofit): WebService {
+    fun provideWebService(@CommonRetrofit retrofit: Retrofit): WebService {
         return retrofit.create(WebService::class.java)
     }
 

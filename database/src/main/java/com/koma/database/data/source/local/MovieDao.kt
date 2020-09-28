@@ -24,8 +24,8 @@ import com.koma.database.data.entities.Movie
 
 @Dao
 interface MovieDao {
-    @Query("SELECT * from movie where page = :page")
-    suspend fun getMovie(page: Int): List<Movie>
+    @Query("SELECT * from movie")
+    suspend fun getMovie(): List<Movie>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(movie: List<Movie>)

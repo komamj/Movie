@@ -67,4 +67,10 @@ class MovieWrapperFragment : BaseFragment<MovieFragmentMovieWrapperBinding>() {
     }
 
     override fun getLayoutId() = R.layout.movie_fragment_movie_wrapper
+
+    companion object {
+        fun newInstance(): MovieWrapperFragment {
+            return MovieWrapperFragment()
+        }
+    }
 }

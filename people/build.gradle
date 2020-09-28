@@ -9,6 +9,8 @@ apply from: '../shared_dependencies.gradle'
 apply from: '../test_dependencies.gradle'
 
 kapt {
+    correctErrorTypes = true
+    useBuildCache = true
     arguments {
         arg("AROUTER_MODULE_NAME", project.getName())
         arg("AROUTER_GENERATE_DOC", "enable")

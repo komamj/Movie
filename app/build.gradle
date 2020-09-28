@@ -12,7 +12,8 @@ apply from: '../shared_dependencies.gradle'
 apply from: '../test_dependencies.gradle'
 
 kapt {
-    correctErrorTypes true
+    correctErrorTypes = true
+    useBuildCache = true
 }
 
 android {
@@ -58,6 +59,11 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            versionNameSuffix "-debug"
+        }
+
         release {
             resValue "string", "ad_unit_id", "$release_ad_unit_id"
 
