@@ -1,5 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.koma.router">
 
-    /
+    <application>
+        <activity android:name=".SchemeFilterActivity">
+            <intent-filter>
+                <data
+                    android:host="com.koma"
+                    android:scheme="arouter" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+    </application>
 </manifest>

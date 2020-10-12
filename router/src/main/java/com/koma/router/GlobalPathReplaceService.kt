@@ -29,10 +29,12 @@ class GlobalPathReplaceService : PathReplaceService {
     }
 
     override fun forString(path: String): String {
+        Timber.d("path:$path")
         return path
     }
 
     override fun forUri(uri: Uri): Uri {
+        Timber.d("uri:$uri")
         return uri
     }
 }

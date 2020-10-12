@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.koma.app.splash
+package com.koma.splash
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel

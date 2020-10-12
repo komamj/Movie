@@ -1,7 +1,8 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+
+apply plugin: 'com.alibaba.arouter'
 
 apply plugin: 'dagger.hilt.android.plugin'
 
@@ -11,6 +12,10 @@ apply from: '../test_dependencies.gradle'
 kapt {
     correctErrorTypes = true
     useBuildCache = true
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+        arg("AROUTER_GENERATE_DOC", "enable")
+    }
 }
 
 android {
@@ -23,9 +28,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField 'String', 'TMDB_API_KEY', "\"${tmdb_api_key}\""
-
-        buildConfigField 'String', 'ENDPOINT', "\"${endpoint}\""
+        resourcePrefix "splash_"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -47,7 +50,7 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            consumerProguardFiles "consumer-rules.pro"
+            consumerProguardFiles 'consumer-rules.pro'
         }
     }
 }
@@ -55,7 +58,26 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
+
+    implementation "com.alibaba:arouter-api:$routerApiVersion"
+    kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
+
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
+
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$interceptorVersion"
+
+    implementation project(':common')
+    implementation project(':image')
+    implementation project(':network')
+    implementation project(':database')
 }

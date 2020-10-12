@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 ext {
-    gradlePluginVersion = '4.0.1'
+    gradlePluginVersion = '4.0.2'
     googleServicesVersion = '4.3.3'
     fabricGradleVersion = '1.31.2'
 
@@ -39,7 +39,7 @@ ext {
     appcompatVersion = '1.2.0'
     materialVersion = '1.2.1'
     navigationVersion = '2.3.0'
-    constraintlayoutVersion = '2.0.1'
+    constraintlayoutVersion = '2.0.2'
     viewpagerVersion = '1.0.0'
 
     lifecycleVersion = '2.2.0'

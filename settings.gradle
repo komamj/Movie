@@ -1,3 +1,4 @@
+include ':splash'
 include ':api_movie'
 include ':database'
 rootProject.name = 'Movie'

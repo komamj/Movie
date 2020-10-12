@@ -22,9 +22,10 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.koma.common.BuildConfig
 import com.koma.log.DebugTree
 import com.koma.log.ReleaseTree
+import com.koma.router.RouterApplication
 import timber.log.Timber
 
-open class BaseApplication : Application() {
+open class BaseApplication : RouterApplication() {
     override fun onCreate() {
         super.onCreate()
 

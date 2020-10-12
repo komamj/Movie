@@ -20,7 +20,7 @@ import android.app.Application
 import com.alibaba.android.arouter.BuildConfig
 import com.alibaba.android.arouter.launcher.ARouter
 
-class RouterApplication : Application() {
+open class RouterApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 

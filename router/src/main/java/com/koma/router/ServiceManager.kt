@@ -36,7 +36,11 @@ class ServiceManager {
         ARouter.getInstance().inject(this)
     }
 
-    fun <T> getService(name: String, clazz: Class<T>): T {
+    fun <T> getService(clazz: Class<T>): T {
+        return ARouter.getInstance().navigation(clazz)
+    }
+
+    fun <T> getService(name: String): T {
         return ARouter.getInstance().build(name).navigation() as T
     }
 }

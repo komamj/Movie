@@ -113,6 +113,8 @@ dependencies {
 
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
+    implementation project(':splash')
+
     implementation project(':common')
     implementation project(':movie')
     implementation project(':tv')

@@ -43,7 +43,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(), EasyPermissions.Pe
 
         initPermissions()
 
-        initAd()
+     //   initAd()
     }
 
     private fun initAd() {
