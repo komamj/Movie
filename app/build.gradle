@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
 apply plugin: 'com.google.gms.google-services'
-apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.crashlytics'
 
 apply from: '../shared_dependencies.gradle'
 apply from: '../test_dependencies.gradle'
@@ -102,7 +102,8 @@ dependencies {
 
     implementation "pub.devrel:easypermissions:$permissionVersion"
 
-    implementation "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
+    implementation "com.google.firebase:firebase-crashlytics:$firebaseCrashlyticVersion"
+    implementation "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion"
 
     // Firebase
     implementation "com.google.firebase:firebase-core:$firebaseCoreVersion"

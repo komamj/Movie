@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 ext {
-    gradlePluginVersion = '4.0.2'
+    gradlePluginVersion = '4.1.0'
     googleServicesVersion = '4.3.3'
-    fabricGradleVersion = '1.31.2'
+    firebaseCrashlyticsGradleVersion = '2.3.0'
 
     kotlinVersion = '1.4.10'
 
@@ -57,14 +57,14 @@ ext {
 
     timberVersion = '4.7.1'
 
-    crashlyticsVersion = '2.10.1'
-
     leakcanaryVersion = '2.2'
 
     // Firebase
     kotlinxCoroutinesPlayServicesVersion = '1.1.1'
-    firebaseCoreVersion = '17.5.0'
-    firebaseAuthVersion = '19.4.0'
+    firebaseCoreVersion = '17.5.1'
+    firebaseCrashlyticVersion = '17.2.2'
+    firebaseAnalyticsVersion = '17.6.0'
+    firebaseAuthVersion = '19.5.0'
     firebaseDatabaseVersion = '19.4.0'
     firebaseStorageVersion = '19.1.1'
     firebaseAdsVersion = '19.4.0'

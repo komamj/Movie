@@ -1,13 +1,9 @@
 buildscript {
     apply from: 'versions.gradle'
-    ext {
-        kotlin_version = '1.4.10'
-    }
 
     repositories {
         google()
         jcenter()
-        maven { url 'https://maven.fabric.io/public' }
     }
 
     dependencies {
@@ -21,7 +17,7 @@ buildscript {
 
         classpath "com.google.gms:google-services:$googleServicesVersion"
 
-        classpath "io.fabric.tools:gradle:$fabricGradleVersion"
+        classpath "com.google.firebase:firebase-crashlytics-gradle:$firebaseCrashlyticsGradleVersion"
     }
 }
 
