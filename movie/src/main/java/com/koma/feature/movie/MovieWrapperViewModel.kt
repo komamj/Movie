@@ -93,8 +93,8 @@ class MovieWrapperViewModel @ViewModelInject constructor(
         when (val popularMovieResult = popularMovie.await()) {
             is Resource.Success -> {
                 val homeModel = MovieWrapper(
-                    getString(R.string.popular_movie),
-                    getString(R.string.popular_movie_description),
+                    getString(R.string.movie_popular_movie),
+                    getString(R.string.movie_popular_movie_description),
                     popularMovieResult.data
                 )
                 homeModelList.add(homeModel)
@@ -103,8 +103,8 @@ class MovieWrapperViewModel @ViewModelInject constructor(
         when (val topRatedMovieResult = topRatedMovie.await()) {
             is Resource.Success -> {
                 val homeModel = MovieWrapper(
-                    getString(R.string.top_rated_movie),
-                    getString(R.string.top_rated_movie_description),
+                    getString(R.string.movie_top_rated_movie),
+                    getString(R.string.movie_top_rated_movie_description),
                     topRatedMovieResult.data
                 )
                 homeModelList.add(homeModel)
@@ -113,8 +113,8 @@ class MovieWrapperViewModel @ViewModelInject constructor(
         when (val nowPlayingMovieResult = nowPlayingMovie.await()) {
             is Resource.Success -> {
                 val homeModel = MovieWrapper(
-                    getString(R.string.now_playing_movie),
-                    getString(R.string.now_playing_movie_description),
+                    getString(R.string.movie_now_playing_movie),
+                    getString(R.string.movie_now_playing_movie_description),
                     nowPlayingMovieResult.data
                 )
                 homeModelList.add(homeModel)
@@ -123,8 +123,8 @@ class MovieWrapperViewModel @ViewModelInject constructor(
         when (val upcomingMovieResult = upcomingMovie.await()) {
             is Resource.Success -> {
                 val homeModel = MovieWrapper(
-                    getString(R.string.upcoming_movie),
-                    getString(R.string.upcoming_movie_description),
+                    getString(R.string.movie_upcoming_movie),
+                    getString(R.string.movie_upcoming_movie_description),
                     upcomingMovieResult.data
                 )
                 homeModelList.add(homeModel)

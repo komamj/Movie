@@ -65,7 +65,7 @@ ext {
     firebaseCrashlyticVersion = '17.2.2'
     firebaseAnalyticsVersion = '17.6.0'
     firebaseAuthVersion = '19.5.0'
-    firebaseDatabaseVersion = '19.4.0'
+    firebaseDatabaseVersion = '19.5.0'
     firebaseStorageVersion = '19.1.1'
     firebaseAdsVersion = '19.4.0'
 
