@@ -65,22 +65,12 @@ dependencies {
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
 
-    implementation "com.alibaba:arouter-api:$routerApiVersion"
     kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
 
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
     kapt "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
 
-    implementation "androidx.room:room-runtime:$roomVersion"
-    implementation "androidx.room:room-ktx:$roomVersion"
-    kapt "androidx.room:room-compiler:$roomVersion"
-
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$interceptorVersion"
-
-    implementation project(':common')
-    implementation project(':image')
-    implementation project(':network')
+    api project(':api_movie')
     implementation project(':database')
+    implementation project(':common')
 }

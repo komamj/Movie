@@ -47,8 +47,12 @@ dependencies {
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
 
-    api project(':log')
+    api project(':image')
+    api project(':network')
     api project(':router')
+    api project(':log')
+    api project(':database')
+    implementation project(':apm')
 
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoCoreVersion"

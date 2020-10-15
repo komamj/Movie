@@ -20,11 +20,10 @@ import android.app.Application
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.os.StrictMode.VmPolicy
-import com.alibaba.android.arouter.launcher.ARouter
+import com.koma.apm.Apm
 import com.koma.common.BuildConfig
-import com.koma.log.DebugTree
-import com.koma.log.ReleaseTree
-import timber.log.Timber
+import com.koma.log.Log
+import com.koma.router.Router
 
 open class BaseApplication : Application() {
     override fun onCreate() {
@@ -35,18 +34,14 @@ open class BaseApplication : Application() {
 
     private fun init() {
         if (BuildConfig.DEBUG) {
-            Timber.plant(DebugTree())
-
             enabledStrictMode()
-
-            ARouter.openLog()
-            ARouter.openDebug()
-            ARouter.printStackTrace()
-        } else {
-            Timber.plant(ReleaseTree())
         }
 
-        ARouter.init(this)
+        Log.init()
+
+        Apm.init()
+
+        Router.init(this)
     }
 
     private fun enabledStrictMode() {

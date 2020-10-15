@@ -14,8 +14,11 @@
  * limitations under the License.
  */
 
-package com.koma.router.people
+package com.koma.movie.api
 
+import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.template.IProvider
 
-interface PeopleService : IProvider
+interface MovieService : IProvider {
+    fun provideMovieFragment(): Fragment
+}
