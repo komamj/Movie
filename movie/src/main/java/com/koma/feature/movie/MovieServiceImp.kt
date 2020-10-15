@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package com.koma.movie.api
+package com.koma.feature.movie
 
 import android.content.Context
 import androidx.fragment.app.Fragment
-import com.koma.feature.movie.MovieWrapperFragment
-import com.koma.router.movie.MovieService
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.koma.movie.api.MovieService
 import timber.log.Timber
 
+@Route(path = "/service/movie")
 class MovieServiceImp : MovieService {
     override fun init(context: Context?) {
         Timber.d("init")

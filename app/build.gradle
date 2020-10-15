@@ -39,15 +39,6 @@ android {
 
         resValue "string", "ad_unit_id", "$ad_unit_id"
 
-        /*javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += [
-                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
-                        "room.incremental"     : "true",
-                        "room.expandProjection": "true"]
-            }
-        }*/
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -73,7 +64,7 @@ android {
         release {
             resValue "string", "ad_unit_id", "$release_ad_unit_id"
 
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -98,20 +89,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
-    implementation "androidx.room:room-runtime:$roomVersion"
-    implementation "androidx.room:room-ktx:$roomVersion"
-    kapt "androidx.room:room-compiler:$roomVersion"
-
     kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
-
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$interceptorVersion"
-
-    implementation "pub.devrel:easypermissions:$permissionVersion"
-
-    implementation "com.google.firebase:firebase-crashlytics:$firebaseCrashlyticVersion"
-    implementation "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion"
 
     // Firebase
     implementation "com.google.firebase:firebase-core:$firebaseCoreVersion"
@@ -120,20 +98,12 @@ dependencies {
     implementation "com.google.firebase:firebase-ads:$firebaseAdsVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$kotlinxCoroutinesPlayServicesVersion"
 
-    implementation "com.jakewharton.timber:timber:$timberVersion"
-
     implementation project(':splash')
-
-    implementation project(':common')
     implementation project(':movie')
     implementation project(':tv')
     implementation project(':people')
-    implementation project(':network')
-    implementation project(':database')
 
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
-
-    testImplementation "androidx.room:room-testing:$roomVersion"
+    implementation project(':common')
 }
 
 gradle.projectsEvaluated {

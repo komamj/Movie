@@ -39,7 +39,6 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
 
-    implementation project(':movie')
     implementation project(':common')
 
     testImplementation project(':test')

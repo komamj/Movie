@@ -20,7 +20,6 @@ import android.content.Context
 import androidx.multidex.MultiDex
 import com.koma.common.base.BaseApplication
 import dagger.hilt.android.HiltAndroidApp
-import leakcanary.AppWatcher
 
 @HiltAndroidApp
 class MainApplication : BaseApplication() {
@@ -28,13 +27,5 @@ class MainApplication : BaseApplication() {
         super.attachBaseContext(base)
 
         MultiDex.install(this)
-    }
-
-    override fun onCreate() {
-        super.onCreate()
-
-        if (BuildConfig.DEBUG) {
-            AppWatcher.config = AppWatcher.config.copy(watchFragmentViews = true)
-        }
     }
 }
