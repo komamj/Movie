@@ -73,7 +73,7 @@ dependencies {
     implementation "pub.devrel:easypermissions:$permissionVersion"
 
     implementation "com.google.firebase:firebase-core:$firebaseCoreVersion"
-    implementation "com.google.firebase:firebase-auth:$firebaseAuthVersion"
+    implementation "com.google.firebase:firebase-auth-ktx:$firebaseAuthVersion"
     implementation "com.google.firebase:firebase-database:$firebaseDatabaseVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$kotlinxCoroutinesPlayServicesVersion"
 

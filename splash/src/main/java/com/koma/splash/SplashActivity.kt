@@ -14,58 +14,29 @@
  * limitations under the License.
  */
 
-package com.koma.app.splash
+package com.koma.splash
 
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import androidx.annotation.NonNull
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdLoader
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.formats.NativeAdOptions
-import com.koma.app.MainActivity
-import com.koma.app.R
-import com.koma.app.databinding.ActivitySplashBinding
+import com.alibaba.android.arouter.launcher.ARouter
 import com.koma.common.base.BaseActivity
+import com.koma.splash.databinding.SplashActivitySplashBinding
 import dagger.hilt.android.AndroidEntryPoint
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import timber.log.Timber
 
 @AndroidEntryPoint
-class SplashActivity : BaseActivity<ActivitySplashBinding>(), EasyPermissions.PermissionCallbacks {
+class SplashActivity : BaseActivity<SplashActivitySplashBinding>(),
+    EasyPermissions.PermissionCallbacks {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         Timber.d("onCreate")
 
         initPermissions()
-
-     //   initAd()
-    }
-
-    private fun initAd() {
-        MobileAds.initialize(this)
-
-        val adLoader = AdLoader.Builder(this, getString(R.string.ad_unit_id))
-            .forUnifiedNativeAd {
-                // Show the ad.
-            }
-            .withAdListener(object : AdListener() {
-                override fun onAdFailedToLoad(errorCode: Int) {
-                    // Handle the failure by logging, altering the UI, and so on.
-                }
-            })
-            .withNativeAdOptions(
-                NativeAdOptions.Builder()
-                    // Methods in the NativeAdOptions.Builder class can be
-                    // used here to specify individual options settings.
-                    .build()
-            )
-            .build()
-        adLoader.loadAd(AdRequest.Builder().build())
     }
 
     private fun initPermissions() {
@@ -77,15 +48,16 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(), EasyPermissions.Pe
     }
 
     private fun launchMainPage() {
-        startActivity(Intent(this, MainActivity::class.java))
+        ARouter.getInstance().build("/app/main")
+            .withTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            .navigation(this)
         finish()
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
     private fun requestPermission() {
         EasyPermissions.requestPermissions(
             this,
-            getString(R.string.app_name),
+            getString(R.string.splash_app_name),
             REQUEST_CODE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -128,25 +100,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(), EasyPermissions.Pe
         launchMainPage()
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        // binding.adView.resume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        //  binding.adView.pause()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        //  binding.adView.destroy()
-    }
-
-    override fun getLayoutId() = R.layout.activity_splash
+    override fun getLayoutId() = R.layout.splash_activity_splash
 
     companion object {
         private const val REQUEST_CODE = 100

@@ -16,11 +16,13 @@
 
 package com.koma.app
 
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.koma.app.databinding.ActivityMainBinding
 import com.koma.common.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
+@Route(path = "/app/main")
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun getLayoutId() = R.layout.activity_main
 }

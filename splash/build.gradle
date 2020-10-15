@@ -65,6 +65,8 @@ dependencies {
     implementation "com.alibaba:arouter-api:$routerApiVersion"
     kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
 
+    implementation "pub.devrel:easypermissions:$permissionVersion"
+
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
     kapt "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
 

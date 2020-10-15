@@ -18,35 +18,52 @@ package com.koma.common.base
 
 import android.app.Application
 import android.os.StrictMode
+import android.os.StrictMode.ThreadPolicy
+import android.os.StrictMode.VmPolicy
 import com.alibaba.android.arouter.launcher.ARouter
 import com.koma.common.BuildConfig
 import com.koma.log.DebugTree
 import com.koma.log.ReleaseTree
-import com.koma.router.RouterApplication
 import timber.log.Timber
 
-open class BaseApplication : RouterApplication() {
+open class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        init()
+    }
+
+    private fun init() {
         if (BuildConfig.DEBUG) {
             Timber.plant(DebugTree())
 
+            enabledStrictMode()
+
             ARouter.openLog()
             ARouter.openDebug()
-
-            enabledStrictMode()
+            ARouter.printStackTrace()
         } else {
             Timber.plant(ReleaseTree())
         }
+
         ARouter.init(this)
     }
 
     private fun enabledStrictMode() {
         StrictMode.setThreadPolicy(
-            StrictMode.ThreadPolicy.Builder()
-                .detectAll()
+            ThreadPolicy.Builder()
+                .detectDiskReads()
+                .detectDiskWrites()
+                .detectNetwork()
                 .penaltyLog()
+                .build()
+        )
+        StrictMode.setVmPolicy(
+            VmPolicy.Builder()
+                .detectLeakedSqlLiteObjects()
+                .detectLeakedClosableObjects()
+                .penaltyLog()
+                .penaltyDeath()
                 .build()
         )
     }

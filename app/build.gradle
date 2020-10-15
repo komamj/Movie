@@ -5,6 +5,8 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'dagger.hilt.android.plugin'
 
+apply plugin: 'com.alibaba.arouter'
+
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
@@ -14,6 +16,10 @@ apply from: '../test_dependencies.gradle'
 kapt {
     correctErrorTypes = true
     useBuildCache = true
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+        arg("AROUTER_GENERATE_DOC", "enable")
+    }
 }
 
 android {
@@ -33,14 +39,14 @@ android {
 
         resValue "string", "ad_unit_id", "$ad_unit_id"
 
-        javaCompileOptions {
+        /*javaCompileOptions {
             annotationProcessorOptions {
                 arguments += [
                         "room.schemaLocation"  : "$projectDir/schemas".toString(),
                         "room.incremental"     : "true",
                         "room.expandProjection": "true"]
             }
-        }
+        }*/
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -96,6 +102,8 @@ dependencies {
     implementation "androidx.room:room-ktx:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
 
+    kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
+
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$interceptorVersion"
@@ -107,7 +115,7 @@ dependencies {
 
     // Firebase
     implementation "com.google.firebase:firebase-core:$firebaseCoreVersion"
-    implementation "com.google.firebase:firebase-auth:$firebaseAuthVersion"
+    implementation "com.google.firebase:firebase-auth-ktx:$firebaseAuthVersion"
     implementation "com.google.firebase:firebase-database-ktx:$firebaseDatabaseVersion"
     implementation "com.google.firebase:firebase-ads:$firebaseAdsVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$kotlinxCoroutinesPlayServicesVersion"

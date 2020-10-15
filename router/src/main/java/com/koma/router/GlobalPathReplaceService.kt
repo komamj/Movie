@@ -25,16 +25,16 @@ import timber.log.Timber
 @Route(path = "/global/path_replace")
 class GlobalPathReplaceService : PathReplaceService {
     override fun init(context: Context) {
-        Timber.d("PathReplaceService init")
+        Timber.d("init")
     }
 
     override fun forString(path: String): String {
-        Timber.d("path:$path")
+        Timber.d("forString path:$path")
         return path
     }
 
     override fun forUri(uri: Uri): Uri {
-        Timber.d("uri:$uri")
+        Timber.d("forUri uri:$uri")
         return uri
     }
 }
