@@ -15,5 +15,7 @@ class AuthInterceptor : IInterceptor {
 
     override fun process(postcard: Postcard?, callback: InterceptorCallback?) {
         Timber.d("postcard:$postcard")
+
+        callback?.onContinue(postcard)
     }
 }

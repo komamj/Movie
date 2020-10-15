@@ -20,6 +20,7 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import androidx.annotation.NonNull
+import com.alibaba.android.arouter.launcher.ARouter
 import com.koma.common.base.BaseActivity
 import com.koma.splash.databinding.SplashActivitySplashBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,9 +48,10 @@ class SplashActivity : BaseActivity<SplashActivitySplashBinding>(),
     }
 
     private fun launchMainPage() {
-        /* startActivity(Intent(this, MainActivity::class.java))
-         finish()
-         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)*/
+        ARouter.getInstance().build("/app/main")
+            .withTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            .navigation(this)
+        finish()
     }
 
     private fun requestPermission() {
