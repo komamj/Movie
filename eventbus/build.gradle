@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg('eventBusIndex', 'com.koma.eventbus.EventBusIndex')
+    }
+}
+
+android {
+    compileSdkVersion defaultCompileSdkVersion as Integer
+    buildToolsVersion defaultBuildToolsVersion as String
+
+    defaultConfig {
+        minSdkVersion defaultMinSdkVersion as Integer
+        targetSdkVersion defaultTargetSdkVersion as String
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            consumerProguardFiles 'consumer-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+    kapt "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+
+    api "org.greenrobot:eventbus:$eventbusVersion"
+    kapt "org.greenrobot:eventbus-annotation-processor:$eventbusVersion"
+
+    implementation project(':log')
+}

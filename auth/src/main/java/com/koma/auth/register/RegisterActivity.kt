@@ -18,9 +18,25 @@ package com.koma.auth.register
 
 import android.os.Bundle
 import com.koma.auth.base.BaseAuthActivity
+import com.koma.eventbus.EventBus
+import com.koma.eventbus.data.entities.Event
+import org.greenrobot.eventbus.Subscribe
 
 class RegisterActivity : BaseAuthActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        EventBus.register(this)
+    }
+
+    @Subscribe()
+    fun subscribeRegister(event: Event<String>) {
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        EventBus.unregister(this)
     }
 }
