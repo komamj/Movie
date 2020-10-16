@@ -1,3 +1,4 @@
+include ':home'
 include ':apm'
 include ':splash'
 include ':api_movie'

@@ -99,6 +99,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$kotlinxCoroutinesPlayServicesVersion"
 
     implementation project(':splash')
+    implementation project(':home')
     implementation project(':movie')
     implementation project(':tv')
     implementation project(':people')
