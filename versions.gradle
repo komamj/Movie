@@ -55,6 +55,8 @@ ext {
     rxJavaVersion = '2.2.11'
     rxAndroidVersion = '2.1.1'
 
+    eventbusVersion = '3.2.0'
+
     timberVersion = '4.7.1'
 
     leakcanaryVersion = '2.5'
