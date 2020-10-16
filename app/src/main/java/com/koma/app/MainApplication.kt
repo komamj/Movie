@@ -18,7 +18,9 @@ package com.koma.app
 
 import android.content.Context
 import androidx.multidex.MultiDex
+import com.koma.auth.AuthEventBusIndex
 import com.koma.common.base.BaseApplication
+import com.koma.eventbus.EventBus
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -27,5 +29,7 @@ class MainApplication : BaseApplication() {
         super.attachBaseContext(base)
 
         MultiDex.install(this)
+
+        EventBus.init(listOf(AuthEventBusIndex()))
     }
 }

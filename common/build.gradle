@@ -50,6 +50,7 @@ dependencies {
     api project(':image')
     api project(':network')
     api project(':router')
+    api project(':eventbus')
     api project(':log')
     api project(':database')
     implementation project(':apm')
