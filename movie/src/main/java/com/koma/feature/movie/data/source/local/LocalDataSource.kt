@@ -20,10 +20,10 @@ import com.koma.common.data.entities.Resource
 import com.koma.database.data.entities.Movie
 import com.koma.database.data.source.local.MovieDao
 import com.koma.feature.movie.data.source.MovieDataSource
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(
     private val preferenceHelper: PreferenceHelper,
