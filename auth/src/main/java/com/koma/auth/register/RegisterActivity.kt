@@ -31,7 +31,6 @@ class RegisterActivity : BaseAuthActivity() {
 
     @Subscribe()
     fun subscribeRegister(event: Event<String>) {
-
     }
 
     override fun onDestroy() {
