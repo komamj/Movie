@@ -48,4 +48,16 @@ object EventBus {
     fun <T> postStickyEvent(event: Event<T>) {
         EventBus.getDefault().postSticky(event)
     }
+
+    fun <T> cancelEventDelivery(event: Event<T>) {
+        EventBus.getDefault().cancelEventDelivery(event)
+    }
+
+    fun <T> removeStickyEvent(event: Event<T>) {
+        EventBus.getDefault().removeStickyEvent(event)
+    }
+
+    fun removeAllStickyEvents() {
+        EventBus.getDefault().removeAllStickyEvents()
+    }
 }
