@@ -68,7 +68,7 @@ ext {
     firebaseAnalyticsVersion = '17.6.0'
     firebaseAuthVersion = '19.4.0'
     firebaseDatabaseVersion = '19.5.0'
-    firebaseStorageVersion = '19.1.1'
+    firebaseStorageVersion = '19.2.0'
     firebaseAdsVersion = '19.4.0'
 
     //unit test

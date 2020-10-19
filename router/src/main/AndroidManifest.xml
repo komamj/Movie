@@ -5,8 +5,8 @@
         <activity android:name=".SchemeFilterActivity">
             <intent-filter>
                 <data
-                    android:host="com.koma"
-                    android:scheme="arouter" />
+                    android:host="m.koma.com"
+                    android:scheme="router" />
 
                 <action android:name="android.intent.action.VIEW" />
 
