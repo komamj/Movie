@@ -70,7 +70,7 @@ dependencies {
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
     kapt "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
 
-    api project(':api_movie')
+    implementation project(':api_movie')
     implementation project(':database')
     implementation project(':common')
 }

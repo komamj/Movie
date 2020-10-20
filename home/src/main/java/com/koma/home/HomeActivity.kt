@@ -14,15 +14,16 @@
  * limitations under the License.
  */
 
-package com.koma.app
+package com.koma.home
 
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.koma.app.databinding.ActivityMainBinding
 import com.koma.common.base.BaseActivity
+import com.koma.home.api.PATH_HOME_ACTIVITY
+import com.koma.home.databinding.HomeActivityHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-@Route(path = "/app/main")
-class MainActivity : BaseActivity<ActivityMainBinding>() {
-    override fun getLayoutId() = R.layout.activity_main
+@Route(path = PATH_HOME_ACTIVITY)
+class HomeActivity : BaseActivity<HomeActivityHomeBinding>() {
+    override fun getLayoutId() = R.layout.home_activity_home
 }
