@@ -49,7 +49,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
                             bottomNavigationView.selectedItemId = R.id.nav_people
                         }
                         else -> {
-                            bottomNavigationView.selectedItemId = R.id.nav_home
+                            bottomNavigationView.selectedItemId = R.id.nav_movie
                         }
                     }
                 }
@@ -57,7 +57,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
 
             bottomNavigationView.setOnNavigationItemSelectedListener {
                 when (it.itemId) {
-                    R.id.nav_home -> {
+                    R.id.nav_movie -> {
                         viewPager.setCurrentItem(0, true)
                         true
                     }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_title_movie">电影</string>
+    <string name="home_title_character">人物</string>
+    <string name="home_title_tv">电视</string>
+</resources>

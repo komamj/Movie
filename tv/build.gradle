@@ -52,13 +52,16 @@ android {
             consumerProguardFiles 'consumer-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-    implementation "com.alibaba:arouter-api:$routerApiVersion"
     kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
 
-    implementation project(':database')
+    implementation project(':common')
 }
