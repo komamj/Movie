@@ -22,7 +22,6 @@ import android.os.Bundle
 import androidx.annotation.NonNull
 import com.alibaba.android.arouter.launcher.ARouter
 import com.koma.common.base.BaseActivity
-import com.koma.home.api.GROUP_HOME
 import com.koma.home.api.PATH_HOME_ACTIVITY
 import com.koma.splash.databinding.SplashActivitySplashBinding
 import dagger.hilt.android.AndroidEntryPoint

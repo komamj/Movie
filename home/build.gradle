@@ -54,6 +54,10 @@ android {
             consumerProguardFiles 'consumer-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -69,6 +73,6 @@ dependencies {
     kapt "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
 
     implementation project(':api_home')
-
+    implementation project(':api_movie')
     implementation project(':common')
 }
