@@ -24,7 +24,7 @@ import com.koma.eventbus.EventBus
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class MainApplication : BaseApplication() {
+class App : BaseApplication() {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
 
