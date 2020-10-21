@@ -60,8 +60,10 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
 
-    implementation project(':log')
+    implementation "com.google.code.gson:gson:$gsonVersion"
 
     api "com.alibaba:arouter-api:$routerApiVersion"
     kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
+
+    implementation project(':log')
 }
