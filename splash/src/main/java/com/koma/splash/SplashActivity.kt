@@ -21,7 +21,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.annotation.NonNull
 import com.alibaba.android.arouter.facade.Postcard
-import com.alibaba.android.arouter.facade.callback.NavigationCallback
+import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
 import com.koma.common.base.BaseActivity
 import com.koma.home.api.PATH_HOME_ACTIVITY
@@ -53,20 +53,10 @@ class SplashActivity : BaseActivity<SplashActivitySplashBinding>(),
     private fun launchMainPage() {
         ARouter.getInstance().build(PATH_HOME_ACTIVITY)
             .withTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-            .navigation(this, object : NavigationCallback {
-                override fun onFound(postcard: Postcard?) {
+            .navigation(this, object : NavCallback() {
+                override fun onArrival(postcard: Postcard?) {
                     finish()
                 }
-
-                override fun onLost(postcard: Postcard?) {
-                }
-
-                override fun onArrival(postcard: Postcard?) {
-                }
-
-                override fun onInterrupt(postcard: Postcard?) {
-                }
-
             })
     }
 
