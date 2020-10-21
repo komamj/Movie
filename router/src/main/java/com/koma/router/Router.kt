@@ -17,6 +17,7 @@
 package com.koma.router
 
 import android.app.Application
+import android.net.Uri
 import com.alibaba.android.arouter.BuildConfig
 import com.alibaba.android.arouter.launcher.ARouter
 
@@ -34,4 +35,8 @@ object Router {
     fun inject(any: Any) {
         ARouter.getInstance().inject(any)
     }
+
+    fun build(path: String): Navigator = Navigator(path)
+
+    fun build(uri: Uri): Navigator = Navigator(uri)
 }

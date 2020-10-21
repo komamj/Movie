@@ -18,7 +18,7 @@ package com.koma.router
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.alibaba.android.arouter.launcher.ARouter
+import com.alibaba.android.arouter.facade.Postcard
 import timber.log.Timber
 
 class SchemeFilterActivity : AppCompatActivity() {
@@ -27,8 +27,13 @@ class SchemeFilterActivity : AppCompatActivity() {
 
         Timber.d("onCreate")
 
-        val uri = intent.data
-        ARouter.getInstance().build(uri).navigation()
-        finish()
+        intent.data?.run {
+            Router.build(this).navigation(this@SchemeFilterActivity,
+                object : NavigatorCallback() {
+                    override fun onArrival(postcard: Postcard?) {
+                        finish()
+                    }
+                })
+        }
     }
 }
