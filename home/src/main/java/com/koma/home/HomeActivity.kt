@@ -100,7 +100,6 @@ class HomeActivity : BaseActivity<HomeActivityHomeBinding>() {
         currentTag = readyFragmentTag
     }
 
-
     override fun getLayoutId() = R.layout.home_activity_home
 
     companion object {
