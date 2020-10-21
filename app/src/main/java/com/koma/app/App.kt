@@ -16,13 +16,20 @@
 
 package com.koma.app
 
-import com.alibaba.android.arouter.facade.annotation.Route
-import com.koma.app.databinding.ActivityMainBinding
-import com.koma.common.base.BaseActivity
-import dagger.hilt.android.AndroidEntryPoint
+import android.content.Context
+import androidx.multidex.MultiDex
+import com.koma.auth.AuthEventBusIndex
+import com.koma.common.base.BaseApplication
+import com.koma.eventbus.EventBus
+import dagger.hilt.android.HiltAndroidApp
 
-@AndroidEntryPoint
-@Route(path = "/app/main")
-class MainActivity : BaseActivity<ActivityMainBinding>() {
-    override fun getLayoutId() = R.layout.activity_main
+@HiltAndroidApp
+class App : BaseApplication() {
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+
+        MultiDex.install(this)
+
+        EventBus.init(listOf(AuthEventBusIndex()))
+    }
 }

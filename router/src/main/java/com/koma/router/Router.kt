@@ -17,6 +17,7 @@
 package com.koma.router
 
 import android.app.Application
+import com.alibaba.android.arouter.BuildConfig
 import com.alibaba.android.arouter.launcher.ARouter
 
 object Router {
@@ -28,5 +29,9 @@ object Router {
         }
 
         ARouter.init(application)
+    }
+
+    fun inject(any: Any) {
+        ARouter.getInstance().inject(any)
     }
 }

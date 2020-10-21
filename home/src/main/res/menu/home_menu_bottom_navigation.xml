@@ -16,15 +16,15 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_home"
-        android:icon="@drawable/ic_movie_black_24dp"
-        android:title="@string/title_movie" />
+        android:id="@+id/nav_movie"
+        android:icon="@drawable/home_ic_movie_black_24dp"
+        android:title="@string/home_title_movie" />
     <item
         android:id="@+id/nav_tv"
-        android:icon="@drawable/ic_tv_black_24dp"
-        android:title="@string/title_tv" />
+        android:icon="@drawable/home_ic_tv_black_24dp"
+        android:title="@string/home_title_tv" />
     <item
         android:id="@+id/nav_people"
-        android:icon="@drawable/ic_character_black_24dp"
-        android:title="@string/title_character" />
+        android:icon="@drawable/home_ic_character_black_24dp"
+        android:title="@string/home_title_character" />
 </menu>

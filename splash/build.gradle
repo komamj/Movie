@@ -70,5 +70,7 @@ dependencies {
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
     kapt "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
 
+    implementation project(':api_home')
+
     implementation project(':common')
 }
