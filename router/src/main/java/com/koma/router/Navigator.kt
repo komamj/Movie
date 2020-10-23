@@ -46,12 +46,16 @@ class Navigator {
         this.postcard.withObject(key, any)
     }
 
-    fun navigation() {
-        this.postcard.navigation()
+    fun greenChannel() = apply {
+        this.postcard.greenChannel()
     }
 
-    fun navigation(context: Context) {
-        this.postcard.navigation(context)
+    fun navigation(): Any {
+        return this.postcard.navigation()
+    }
+
+    fun navigation(context: Context): Any {
+        return this.postcard.navigation(context)
     }
 
     fun navigation(context: Context, callback: NavigatorCallback) {
