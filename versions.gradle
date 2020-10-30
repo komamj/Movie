@@ -44,6 +44,7 @@ ext {
 
     lifecycleVersion = '2.2.0'
     roomVersion = '2.2.5'
+    datastoreVersion = '1.0.0-alpha02'
 
     permissionVersion = '3.0.0'
 

@@ -46,5 +46,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
 
-    implementation "com.google.firebase:firebase-storage-ktx:$firebaseStorageVersion"
+    implementation "androidx.datastore:datastore-preferences:$datastoreVersion"
 }
