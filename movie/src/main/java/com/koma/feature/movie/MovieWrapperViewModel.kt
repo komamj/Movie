@@ -30,7 +30,10 @@ import com.koma.feature.movie.data.entities.MovieWrapper
 import com.koma.feature.movie.data.source.MovieRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -55,11 +58,25 @@ class MovieWrapperViewModel @ViewModelInject constructor(
         get() = _homeModelList
 
     fun start() {
-        _isLoading.postValue(true)
+        _isLoading.value = true
 
         viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
             Timber.e("error:${throwable.message}")
         }) {
+            val homeModelList = mutableListOf<MovieWrapper>()
+
+            repository.getPopularMovie(PAGE, true)
+                .flowOn(Dispatchers.IO)
+                .collectLatest {
+                    if (it is Resource.Success) {
+                        val homeModel = MovieWrapper(
+                            getString(R.string.movie_popular_movie),
+                            getString(R.string.movie_popular_movie_description),
+                            it.data
+                        )
+                        homeModelList.add(homeModel)
+                    }
+                }
             val popularMovie = async {
                 repository.getPopularMovie(PAGE, true)
             }
@@ -72,9 +89,6 @@ class MovieWrapperViewModel @ViewModelInject constructor(
             val upcomingMovie = async {
                 repository.getUpcomingMovie(PAGE, true)
             }
-
-            val homeModelList =
-                handleResult(popularMovie, topRatedMovie, nowPlayingMovie, upcomingMovie)
 
             _homeModelList.postValue(homeModelList)
 

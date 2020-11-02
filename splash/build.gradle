@@ -62,15 +62,8 @@ dependencies {
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
 
-    implementation "com.alibaba:arouter-api:$routerApiVersion"
     kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
 
-    api "pub.devrel:easypermissions:$permissionVersion"
-
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
-    kapt "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
-
     implementation project(':api_home')
-
     implementation project(':common')
 }
