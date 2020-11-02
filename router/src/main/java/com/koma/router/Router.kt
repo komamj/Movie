@@ -39,4 +39,8 @@ object Router {
     fun build(path: String): Navigator = Navigator(path)
 
     fun build(uri: Uri): Navigator = Navigator(uri)
+
+    fun <T> navigation(service: Class<out T>?): T {
+        return ARouter.getInstance().navigation(service)
+    }
 }

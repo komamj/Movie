@@ -22,12 +22,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.koma.common.base.BaseFragment
 import com.koma.feature.movie.databinding.MovieFragmentMovieWrapperBinding
+import com.koma.movie.api.util.PATH_MOVIE_MAIN_PAGE
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint
+@Route(path = PATH_MOVIE_MAIN_PAGE)
 class MovieWrapperFragment : BaseFragment<MovieFragmentMovieWrapperBinding>() {
     private lateinit var adapter: MovieWrapperAdapter
 

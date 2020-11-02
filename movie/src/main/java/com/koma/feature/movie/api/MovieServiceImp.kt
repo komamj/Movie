@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package com.koma.feature.movie
+package com.koma.feature.movie.api
 
 import android.content.Context
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.koma.feature.movie.MovieWrapperFragment
 import com.koma.movie.api.MovieService
 import timber.log.Timber
 

@@ -14,9 +14,6 @@
  * limitations under the License.
  */
 
-package com.koma.router.util
+package com.koma.movie.api.util
 
-import android.content.Intent
-import com.alibaba.android.arouter.launcher.ARouter
-
-fun Intent.getRawUri(): String? = getStringExtra(ARouter.RAW_URI)
+const val PATH_MOVIE_MAIN_PAGE = "/movie/main"

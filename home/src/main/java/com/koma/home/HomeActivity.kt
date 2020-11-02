@@ -24,6 +24,7 @@ import com.koma.common.base.BaseActivity
 import com.koma.home.api.PATH_HOME_ACTIVITY
 import com.koma.home.databinding.HomeActivityHomeBinding
 import com.koma.movie.api.MovieService
+import com.koma.movie.api.util.PATH_MOVIE_MAIN_PAGE
 import com.koma.router.Router
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,7 +38,7 @@ class HomeActivity : BaseActivity<HomeActivityHomeBinding>() {
 
     private val fragmentsHolder: Map<String, Fragment> by lazy {
         mapOf(
-            TAG_MOVIE to movieService.provideMovieFragment(),
+            TAG_MOVIE to Router.build(PATH_MOVIE_MAIN_PAGE).navigation(this) as Fragment,
             TAG_TV to movieService.provideMovieFragment(),
             TAG_PEOPLE to movieService.provideMovieFragment()
         )
@@ -99,7 +100,6 @@ class HomeActivity : BaseActivity<HomeActivityHomeBinding>() {
         fragmentTransaction.commit()
         currentTag = readyFragmentTag
     }
-
 
     override fun getLayoutId() = R.layout.home_activity_home
 

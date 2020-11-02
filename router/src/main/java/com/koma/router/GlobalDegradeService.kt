@@ -24,11 +24,11 @@ import timber.log.Timber
 
 @Route(path = "/global/degrade")
 class GlobalDegradeService : DegradeService {
-    override fun init(context: Context) {
+    override fun init(context: Context?) {
         Timber.e("init")
     }
 
-    override fun onLost(context: Context, postcard: Postcard?) {
+    override fun onLost(context: Context?, postcard: Postcard?) {
         Timber.e("onLost postcard:$postcard")
     }
 }

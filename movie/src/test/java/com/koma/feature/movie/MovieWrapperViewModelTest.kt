@@ -117,5 +117,5 @@ class MovieWrapperViewModelTest {
             assertThat(LiveDataTestUtil.getValue(viewModel.homeModelList).size).isEqualTo(4)
         }
 
-    private fun mockMovie() = Movie(1, "", "", "", "", "", "", 1)
+    private fun mockMovie() = Movie("1", "", "", "", "", "", "")
 }
