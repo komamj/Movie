@@ -5,21 +5,14 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'dagger.hilt.android.plugin'
 
-apply plugin: 'com.alibaba.arouter'
-
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 apply from: '../shared_dependencies.gradle'
-apply from: '../test_dependencies.gradle'
 
 kapt {
     correctErrorTypes = true
     useBuildCache = true
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-        arg("AROUTER_GENERATE_DOC", "enable")
-    }
 }
 
 android {
@@ -34,10 +27,6 @@ android {
         versionName appVersionName as String
 
         multiDexEnabled true
-
-        manifestPlaceholders = [ADMOB_APP_ID: "${ADMOB_APP_ID}"]
-
-        resValue "string", "ad_unit_id", "$ad_unit_id"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -75,36 +64,11 @@ dependencies {
 
     implementation "androidx.multidex:multidex:$multidexVersion"
 
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
-    kapt "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
-
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
-
-    implementation "androidx.appcompat:appcompat:$appcompatVersion"
-    implementation "com.google.android.material:material:$materialVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
-    implementation "androidx.viewpager2:viewpager2:$viewpagerVersion"
-
-    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
-
-    kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
-
-    // Firebase
-    implementation "com.google.firebase:firebase-core:$firebaseCoreVersion"
-    implementation "com.google.firebase:firebase-auth-ktx:$firebaseAuthVersion"
-    implementation "com.google.firebase:firebase-database-ktx:$firebaseDatabaseVersion"
-    implementation "com.google.firebase:firebase-ads:$firebaseAdsVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$kotlinxCoroutinesPlayServicesVersion"
-
     implementation project(':splash')
-    implementation project(':auth')
     implementation project(':home')
     implementation project(':movie')
     implementation project(':tv')
     implementation project(':people')
-
     implementation project(':common')
 }
 

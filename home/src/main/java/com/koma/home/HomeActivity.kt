@@ -24,7 +24,7 @@ import com.koma.common.base.BaseActivity
 import com.koma.home.api.PATH_HOME_ACTIVITY
 import com.koma.home.databinding.HomeActivityHomeBinding
 import com.koma.movie.api.MovieService
-import com.koma.movie.api.PATH_MOVIE_MAIN_PAGE
+import com.koma.movie.api.util.PATH_MOVIE_MAIN_PAGE
 import com.koma.router.Router
 import dagger.hilt.android.AndroidEntryPoint
 

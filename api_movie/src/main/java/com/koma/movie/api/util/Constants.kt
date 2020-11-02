@@ -14,18 +14,6 @@
  * limitations under the License.
  */
 
-package com.koma.app
+package com.koma.movie.api.util
 
-import android.content.Context
-import androidx.multidex.MultiDex
-import com.koma.common.base.BaseApplication
-import dagger.hilt.android.HiltAndroidApp
-
-@HiltAndroidApp
-class App : BaseApplication() {
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base)
-
-        MultiDex.install(this)
-    }
-}
+const val PATH_MOVIE_MAIN_PAGE = "/movie/main"

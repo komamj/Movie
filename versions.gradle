@@ -39,7 +39,7 @@ ext {
     appcompatVersion = '1.2.0'
     materialVersion = '1.2.1'
     navigationVersion = '2.3.1'
-    constraintlayoutVersion = '2.0.2'
+    constraintlayoutVersion = '2.0.4'
     viewpagerVersion = '1.0.0'
 
     lifecycleVersion = '2.2.0'
@@ -64,11 +64,11 @@ ext {
 
     // Firebase
     kotlinxCoroutinesPlayServicesVersion = '1.1.1'
-    firebaseCoreVersion = '17.5.1'
+    firebaseCoreVersion = '18.0.0'
     firebaseCrashlyticVersion = '17.2.2'
     firebaseAnalyticsVersion = '17.6.0'
-    firebaseAuthVersion = '19.4.0'
-    firebaseDatabaseVersion = '19.5.0'
+    firebaseAuthVersion = '20.0.0'
+    firebaseDatabaseVersion = '19.5.1'
     firebaseStorageVersion = '19.2.0'
     firebaseAdsVersion = '19.5.0'
 

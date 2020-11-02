@@ -65,10 +65,12 @@ dependencies {
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
 
-    kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
-
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
     kapt "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
 
     implementation project(':api_movie')
     implementation project(':database')

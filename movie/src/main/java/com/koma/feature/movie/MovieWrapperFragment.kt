@@ -25,7 +25,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.koma.common.base.BaseFragment
 import com.koma.feature.movie.databinding.MovieFragmentMovieWrapperBinding
-import com.koma.movie.api.PATH_MOVIE_MAIN_PAGE
+import com.koma.movie.api.util.PATH_MOVIE_MAIN_PAGE
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
