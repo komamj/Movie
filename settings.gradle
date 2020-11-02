@@ -1,3 +1,4 @@
+include ':permisson'
 include ':api_home'
 include ':theme'
 include ':eventbus'

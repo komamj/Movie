@@ -53,6 +53,7 @@ dependencies {
     api project(':eventbus')
     api project(':log')
     api project(':database')
+    api project(':permisson')
     implementation project(':apm')
 
     testImplementation "junit:junit:$junitVersion"

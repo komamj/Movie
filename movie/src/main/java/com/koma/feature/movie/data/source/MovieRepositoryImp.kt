@@ -20,6 +20,8 @@ import com.koma.common.data.entities.Resource
 import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.source.local.LocalDataSource
 import com.koma.feature.movie.data.source.remote.RemoteDataSource
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -28,17 +30,22 @@ class MovieRepositoryImp @Inject constructor(
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource
 ) : MovieRepository {
-    override suspend fun getPopularMovie(page: Int, forceUpdate: Boolean): Resource<List<Movie>> {
-        return if (forceUpdate) {
-            val result = remoteDataSource.getPopularMovie(page)
-            if (result is Resource.Success) {
-                result.data?.run {
-                    localDataSource.saveMovie(this)
+    override suspend fun getPopularMovie(
+        page: Int,
+        forceUpdate: Boolean
+    ): Flow<Resource<List<Movie>>> {
+        return flow {
+            if (forceUpdate) {
+                val result = remoteDataSource.getPopularMovie(page)
+                if (result is Resource.Success) {
+                    result.data?.run {
+                        localDataSource.saveMovie(this)
+                    }
                 }
+                emit(result)
+            } else {
+                emit(localDataSource.getPopularMovie(page))
             }
-            result
-        } else {
-            localDataSource.getPopularMovie(page)
         }
     }
 

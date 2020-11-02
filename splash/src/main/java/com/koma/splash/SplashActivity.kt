@@ -17,27 +17,30 @@
 package com.koma.splash
 
 import android.Manifest
-import android.content.Intent
 import android.os.Bundle
-import androidx.annotation.NonNull
+import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.Postcard
-import com.koma.common.base.BaseActivity
 import com.koma.home.api.PATH_HOME_ACTIVITY
+import com.koma.permisson.RequestPermissionActivity
 import com.koma.router.NavigatorCallback
 import com.koma.router.Router
 import com.koma.splash.databinding.SplashActivitySplashBinding
 import dagger.hilt.android.AndroidEntryPoint
-import pub.devrel.easypermissions.AppSettingsDialog
+import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
 import timber.log.Timber
 
 @AndroidEntryPoint
-class SplashActivity : BaseActivity<SplashActivitySplashBinding>(),
-    EasyPermissions.PermissionCallbacks {
+class SplashActivity : RequestPermissionActivity() {
+    private lateinit var binding: SplashActivitySplashBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         Timber.d("onCreate")
+
+        binding = DataBindingUtil.setContentView(this, R.layout.splash_activity_splash)
+        binding.lifecycleOwner = this
 
         initPermissions()
     }
@@ -50,21 +53,26 @@ class SplashActivity : BaseActivity<SplashActivitySplashBinding>(),
         }
     }
 
+    @AfterPermissionGranted(PERMISSION_REQUEST_CODE)
     private fun launchMainPage() {
-        Router.build(PATH_HOME_ACTIVITY)
-            .withTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-            .navigation(this, object : NavigatorCallback() {
-                override fun onArrival(postcard: Postcard?) {
-                    finish()
-                }
-            })
+        if (isPermissionGranted()) {
+            Router.build(PATH_HOME_ACTIVITY)
+                .withTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+                .navigation(this, object : NavigatorCallback() {
+                    override fun onArrival(postcard: Postcard?) {
+                        finish()
+                    }
+                })
+        } else {
+            requestPermission()
+        }
     }
 
     private fun requestPermission() {
         EasyPermissions.requestPermissions(
             this,
             getString(R.string.splash_app_name),
-            REQUEST_CODE,
+            PERMISSION_REQUEST_CODE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
         )
@@ -78,37 +86,7 @@ class SplashActivity : BaseActivity<SplashActivitySplashBinding>(),
         )
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        @NonNull permissions: Array<String>,
-        @NonNull grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        // EasyPermissions handles the request result.
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
-    }
-
-    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
-            AppSettingsDialog.Builder(this).build().show()
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
-            // Do something after user returned from app settings screen, like showing a Toast.
-        }
-    }
-
-    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
-        launchMainPage()
-    }
-
-    override fun getLayoutId() = R.layout.splash_activity_splash
-
     companion object {
-        private const val REQUEST_CODE = 100
+        private const val PERMISSION_REQUEST_CODE = 100
     }
 }
