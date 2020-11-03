@@ -88,7 +88,7 @@ class HomeActivity : BaseActivity<HomeActivityHomeBinding>() {
             fragmentTransaction.show(readyFragment)
         } else {
             fragmentsHolder[readyFragmentTag]?.run {
-                fragmentTransaction.add(R.id.content_main, this, readyFragmentTag)
+                fragmentTransaction.add(R.id.container, this, readyFragmentTag)
             }
         }
         fragmentTransaction.setCustomAnimations(
