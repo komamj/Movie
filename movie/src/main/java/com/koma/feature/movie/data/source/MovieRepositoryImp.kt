@@ -21,6 +21,7 @@ import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.source.local.LocalDataSource
 import com.koma.feature.movie.data.source.remote.RemoteDataSource
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -46,6 +47,8 @@ class MovieRepositoryImp @Inject constructor(
             } else {
                 emit(localDataSource.getPopularMovie(page))
             }
+        }.catch { throwable ->
+            emit(Resource.Error(throwable))
         }
     }
 

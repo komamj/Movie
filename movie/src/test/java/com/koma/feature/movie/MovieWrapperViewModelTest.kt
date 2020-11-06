@@ -24,7 +24,9 @@ import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.source.MovieRepository
 import com.koma.test.LiveDataTestUtil
 import com.koma.test.MainCoroutineScopeRule
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Rule
@@ -53,24 +55,45 @@ class MovieWrapperViewModelTest {
 
     @Before
     fun `init`() {
+        `when`(application.getString(anyInt())).thenReturn("")
+
         viewModel = MovieWrapperViewModel(
             repository,
-            application
+            coroutineDispatcher = Dispatchers.Main,
+            application = application
         )
     }
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `should return true when start invoke`() {
+    fun `should return true when start invoke`() = mainCoroutineRule.runBlockingTest {
         mainCoroutineRule.pauseDispatcher()
+        `when`(repository.getPopularMovie(anyInt(), anyBoolean())).thenReturn(
+            flowOf(
+                Resource.Success(
+                    emptyList()
+                )
+            )
+        )
 
         viewModel.start()
 
         assertThat(LiveDataTestUtil.getValue(viewModel.isLoading)).isTrue()
     }
 
+    @ExperimentalCoroutinesApi
     @Test
-    fun `should return false when start execute end`() {
+    fun `should return false when start execute end`() = mainCoroutineRule.runBlockingTest {
+        `when`(repository.getPopularMovie(anyInt(), anyBoolean())).thenReturn(
+            flowOf(
+                Resource.Success(
+                    listOf(
+                        mockMovie()
+                    )
+                )
+            )
+        )
+
         viewModel.start()
 
         assertThat(LiveDataTestUtil.getValue(viewModel.isLoading)).isFalse()
@@ -81,9 +104,11 @@ class MovieWrapperViewModelTest {
     fun `should return movie list wrapper when start invoke with repository load data successful`() =
         mainCoroutineRule.runBlockingTest {
             `when`(repository.getPopularMovie(anyInt(), anyBoolean())).thenReturn(
-                Resource.Success(
-                    listOf(
-                        mockMovie()
+                flowOf(
+                    Resource.Success(
+                        listOf(
+                            mockMovie()
+                        )
                     )
                 )
             )
@@ -114,7 +139,7 @@ class MovieWrapperViewModelTest {
 
             assertThat(LiveDataTestUtil.getValue(viewModel.homeModelList)).isNotNull()
             assertThat(LiveDataTestUtil.getValue(viewModel.homeModelList)).isNotEmpty()
-            assertThat(LiveDataTestUtil.getValue(viewModel.homeModelList).size).isEqualTo(4)
+            assertThat(LiveDataTestUtil.getValue(viewModel.homeModelList).size).isEqualTo(1)
         }
 
     private fun mockMovie() = Movie("1", "", "", "", "", "", "")

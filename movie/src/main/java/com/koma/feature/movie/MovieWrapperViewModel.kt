@@ -28,17 +28,15 @@ import com.koma.common.util.Event
 import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.entities.MovieWrapper
 import com.koma.feature.movie.data.source.MovieRepository
-import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class MovieWrapperViewModel @ViewModelInject constructor(
     private val repository: MovieRepository,
+    private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO,
     application: Application
 ) : AndroidViewModel(application) {
     private val _isLoading = MutableLiveData<Boolean>()
@@ -60,14 +58,11 @@ class MovieWrapperViewModel @ViewModelInject constructor(
     fun start() {
         _isLoading.value = true
 
-        viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
-            Timber.e("error:${throwable.message}")
-        }) {
+        viewModelScope.launch {
             val homeModelList = mutableListOf<MovieWrapper>()
 
             repository.getPopularMovie(PAGE, true)
-                .flowOn(Dispatchers.IO)
-                .collectLatest {
+                .collect {
                     if (it is Resource.Success) {
                         val homeModel = MovieWrapper(
                             getString(R.string.movie_popular_movie),
@@ -77,7 +72,7 @@ class MovieWrapperViewModel @ViewModelInject constructor(
                         homeModelList.add(homeModel)
                     }
                 }
-            val popularMovie = async {
+            /*val popularMovie = async {
                 repository.getPopularMovie(PAGE, true)
             }
             val topRatedMovie = async {
@@ -88,11 +83,11 @@ class MovieWrapperViewModel @ViewModelInject constructor(
             }
             val upcomingMovie = async {
                 repository.getUpcomingMovie(PAGE, true)
-            }
+            }*/
 
             _homeModelList.postValue(homeModelList)
 
-            _isLoading.postValue(false)
+            _isLoading.value = false
         }
     }
 
