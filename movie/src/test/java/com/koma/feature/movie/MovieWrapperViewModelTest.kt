@@ -26,7 +26,6 @@ import com.koma.test.LiveDataTestUtil
 import com.koma.test.MainCoroutineScopeRule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Rule
@@ -68,13 +67,6 @@ class MovieWrapperViewModelTest {
     @Test
     fun `should return true when start invoke`() = mainCoroutineRule.runBlockingTest {
         mainCoroutineRule.pauseDispatcher()
-        `when`(repository.getPopularMovie(anyInt(), anyBoolean())).thenReturn(
-            flowOf(
-                Resource.Success(
-                    emptyList()
-                )
-            )
-        )
 
         viewModel.start()
 
@@ -85,11 +77,9 @@ class MovieWrapperViewModelTest {
     @Test
     fun `should return false when start execute end`() = mainCoroutineRule.runBlockingTest {
         `when`(repository.getPopularMovie(anyInt(), anyBoolean())).thenReturn(
-            flowOf(
-                Resource.Success(
-                    listOf(
-                        mockMovie()
-                    )
+            Resource.Success(
+                listOf(
+                    mockMovie()
                 )
             )
         )
@@ -104,11 +94,9 @@ class MovieWrapperViewModelTest {
     fun `should return movie list wrapper when start invoke with repository load data successful`() =
         mainCoroutineRule.runBlockingTest {
             `when`(repository.getPopularMovie(anyInt(), anyBoolean())).thenReturn(
-                flowOf(
-                    Resource.Success(
-                        listOf(
-                            mockMovie()
-                        )
+                Resource.Success(
+                    listOf(
+                        mockMovie()
                     )
                 )
             )
@@ -139,7 +127,7 @@ class MovieWrapperViewModelTest {
 
             assertThat(LiveDataTestUtil.getValue(viewModel.homeModelList)).isNotNull()
             assertThat(LiveDataTestUtil.getValue(viewModel.homeModelList)).isNotEmpty()
-            assertThat(LiveDataTestUtil.getValue(viewModel.homeModelList).size).isEqualTo(1)
+            assertThat(LiveDataTestUtil.getValue(viewModel.homeModelList).size).isEqualTo(4)
         }
 
     private fun mockMovie() = Movie("1", "", "", "", "", "", "")

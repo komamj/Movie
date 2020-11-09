@@ -20,9 +20,6 @@ import com.koma.common.data.entities.Resource
 import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.source.local.LocalDataSource
 import com.koma.feature.movie.data.source.remote.RemoteDataSource
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -34,21 +31,17 @@ class MovieRepositoryImp @Inject constructor(
     override suspend fun getPopularMovie(
         page: Int,
         forceUpdate: Boolean
-    ): Flow<Resource<List<Movie>>> {
-        return flow {
-            if (forceUpdate) {
-                val result = remoteDataSource.getPopularMovie(page)
-                if (result is Resource.Success) {
-                    result.data?.run {
-                        localDataSource.saveMovie(this)
-                    }
+    ): Resource<List<Movie>> {
+        return if (forceUpdate) {
+            val result = remoteDataSource.getPopularMovie(page)
+            if (result is Resource.Success) {
+                result.data?.run {
+                    // localDataSource.saveMovie(this)
                 }
-                emit(result)
-            } else {
-                emit(localDataSource.getPopularMovie(page))
             }
-        }.catch { throwable ->
-            emit(Resource.Error(throwable))
+            result
+        } else {
+            localDataSource.getPopularMovie(page)
         }
     }
 
@@ -57,7 +50,7 @@ class MovieRepositoryImp @Inject constructor(
             val result = remoteDataSource.getTopRatedMovie(page)
             if (result is Resource.Success) {
                 result.data?.run {
-                    localDataSource.saveMovie(this)
+                    // localDataSource.saveMovie(this)
                 }
             }
             result
@@ -74,7 +67,7 @@ class MovieRepositoryImp @Inject constructor(
             val result = remoteDataSource.getNowPlayingMovie(page)
             if (result is Resource.Success) {
                 result.data?.run {
-                    localDataSource.saveMovie(this)
+                    // localDataSource.saveMovie(this)
                 }
             }
             result
@@ -88,7 +81,7 @@ class MovieRepositoryImp @Inject constructor(
             val result = remoteDataSource.getUpcomingMovie(page)
             if (result is Resource.Success) {
                 result.data?.run {
-                    localDataSource.saveMovie(this)
+                    // localDataSource.saveMovie(this)
                 }
             }
             result

@@ -18,13 +18,12 @@ package com.koma.feature.movie.data.source
 
 import com.koma.common.data.entities.Resource
 import com.koma.database.data.entities.Movie
-import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
     suspend fun getPopularMovie(
         page: Int,
         forceUpdate: Boolean = false
-    ): Flow<Resource<List<Movie>>>
+    ): Resource<List<Movie>>
 
     suspend fun getTopRatedMovie(page: Int, forceUpdate: Boolean = false): Resource<List<Movie>>
 

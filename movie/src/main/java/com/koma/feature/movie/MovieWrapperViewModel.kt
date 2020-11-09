@@ -31,7 +31,7 @@ import com.koma.feature.movie.data.source.MovieRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class MovieWrapperViewModel @ViewModelInject constructor(
@@ -47,10 +47,6 @@ class MovieWrapperViewModel @ViewModelInject constructor(
     val errorMessage: LiveData<Event<String>>
         get() = _errorMessage
 
-    /* private val _movie = MutableLiveData<List<Movie>>()
-     val movie: LiveData<List<Movie>>
-         get() = _movie*/
-
     private val _homeModelList = MutableLiveData<List<MovieWrapper>>()
     val homeModelList: LiveData<List<MovieWrapper>>
         get() = _homeModelList
@@ -59,20 +55,7 @@ class MovieWrapperViewModel @ViewModelInject constructor(
         _isLoading.value = true
 
         viewModelScope.launch {
-            val homeModelList = mutableListOf<MovieWrapper>()
-
-            repository.getPopularMovie(PAGE, true)
-                .collect {
-                    if (it is Resource.Success) {
-                        val homeModel = MovieWrapper(
-                            getString(R.string.movie_popular_movie),
-                            getString(R.string.movie_popular_movie_description),
-                            it.data
-                        )
-                        homeModelList.add(homeModel)
-                    }
-                }
-            /*val popularMovie = async {
+            val popularMovie = async {
                 repository.getPopularMovie(PAGE, true)
             }
             val topRatedMovie = async {
@@ -83,7 +66,10 @@ class MovieWrapperViewModel @ViewModelInject constructor(
             }
             val upcomingMovie = async {
                 repository.getUpcomingMovie(PAGE, true)
-            }*/
+            }
+
+            val homeModelList =
+                handleResult(popularMovie, topRatedMovie, nowPlayingMovie, upcomingMovie)
 
             _homeModelList.postValue(homeModelList)
 
