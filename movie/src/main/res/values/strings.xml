@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="movie_module_name">电影</string>
     <string name="movie_popular_movie">热门电影排行榜</string>
     <string name="movie_popular_movie_description">大家都在看的最新热门电影</string>
     <string name="movie_now_playing_movie">新发行的电影</string>
