@@ -28,17 +28,15 @@ import com.koma.common.util.Event
 import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.entities.MovieWrapper
 import com.koma.feature.movie.data.source.MovieRepository
-import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class MovieWrapperViewModel @ViewModelInject constructor(
     private val repository: MovieRepository,
+    private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO,
     application: Application
 ) : AndroidViewModel(application) {
     private val _isLoading = MutableLiveData<Boolean>()
@@ -49,10 +47,6 @@ class MovieWrapperViewModel @ViewModelInject constructor(
     val errorMessage: LiveData<Event<String>>
         get() = _errorMessage
 
-    /* private val _movie = MutableLiveData<List<Movie>>()
-     val movie: LiveData<List<Movie>>
-         get() = _movie*/
-
     private val _homeModelList = MutableLiveData<List<MovieWrapper>>()
     val homeModelList: LiveData<List<MovieWrapper>>
         get() = _homeModelList
@@ -60,23 +54,7 @@ class MovieWrapperViewModel @ViewModelInject constructor(
     fun start() {
         _isLoading.value = true
 
-        viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
-            Timber.e("error:${throwable.message}")
-        }) {
-            val homeModelList = mutableListOf<MovieWrapper>()
-
-            repository.getPopularMovie(PAGE, true)
-                .flowOn(Dispatchers.IO)
-                .collectLatest {
-                    if (it is Resource.Success) {
-                        val homeModel = MovieWrapper(
-                            getString(R.string.movie_popular_movie),
-                            getString(R.string.movie_popular_movie_description),
-                            it.data
-                        )
-                        homeModelList.add(homeModel)
-                    }
-                }
+        viewModelScope.launch {
             val popularMovie = async {
                 repository.getPopularMovie(PAGE, true)
             }
@@ -90,9 +68,12 @@ class MovieWrapperViewModel @ViewModelInject constructor(
                 repository.getUpcomingMovie(PAGE, true)
             }
 
+            val homeModelList =
+                handleResult(popularMovie, topRatedMovie, nowPlayingMovie, upcomingMovie)
+
             _homeModelList.postValue(homeModelList)
 
-            _isLoading.postValue(false)
+            _isLoading.value = false
         }
     }
 

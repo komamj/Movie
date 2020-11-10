@@ -20,6 +20,8 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.koma.database.data.entities.Movie
+import com.koma.feature.movie.MovieCategoryAdapter
 import com.koma.feature.movie.MovieWrapperAdapter
 import com.koma.feature.movie.data.entities.MovieWrapper
 
@@ -37,5 +39,22 @@ fun bindMovieWrapperList(recyclerView: RecyclerView, movieList: List<MovieWrappe
     }
     if (recyclerView.adapter is MovieWrapperAdapter) {
         (recyclerView.adapter as MovieWrapperAdapter).submitList(movieList)
+    }
+}
+
+@BindingAdapter("movieList")
+fun bindMovieList(recyclerView: RecyclerView, movieList: List<Movie>) {
+    if (recyclerView.adapter == null) {
+        with(recyclerView) {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(recyclerView.context).apply {
+                orientation = LinearLayoutManager.HORIZONTAL
+            }
+            itemAnimator = DefaultItemAnimator()
+            adapter = MovieCategoryAdapter()
+        }
+    }
+    if (recyclerView.adapter is MovieCategoryAdapter) {
+        (recyclerView.adapter as MovieCategoryAdapter).submitList(movieList)
     }
 }

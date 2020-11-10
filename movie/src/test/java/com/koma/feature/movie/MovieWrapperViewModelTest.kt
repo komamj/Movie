@@ -24,6 +24,7 @@ import com.koma.database.data.entities.Movie
 import com.koma.feature.movie.data.source.MovieRepository
 import com.koma.test.LiveDataTestUtil
 import com.koma.test.MainCoroutineScopeRule
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
@@ -53,15 +54,18 @@ class MovieWrapperViewModelTest {
 
     @Before
     fun `init`() {
+        `when`(application.getString(anyInt())).thenReturn("")
+
         viewModel = MovieWrapperViewModel(
             repository,
-            application
+            coroutineDispatcher = Dispatchers.Main,
+            application = application
         )
     }
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `should return true when start invoke`() {
+    fun `should return true when start invoke`() = mainCoroutineRule.runBlockingTest {
         mainCoroutineRule.pauseDispatcher()
 
         viewModel.start()
@@ -69,8 +73,17 @@ class MovieWrapperViewModelTest {
         assertThat(LiveDataTestUtil.getValue(viewModel.isLoading)).isTrue()
     }
 
+    @ExperimentalCoroutinesApi
     @Test
-    fun `should return false when start execute end`() {
+    fun `should return false when start execute end`() = mainCoroutineRule.runBlockingTest {
+        `when`(repository.getPopularMovie(anyInt(), anyBoolean())).thenReturn(
+            Resource.Success(
+                listOf(
+                    mockMovie()
+                )
+            )
+        )
+
         viewModel.start()
 
         assertThat(LiveDataTestUtil.getValue(viewModel.isLoading)).isFalse()
