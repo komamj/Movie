@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 ext {
-    gradlePluginVersion = '4.1.0'
+    gradlePluginVersion = '4.1.1'
     googleServicesVersion = '4.3.3'
     firebaseCrashlyticsGradleVersion = '2.3.0'
 
