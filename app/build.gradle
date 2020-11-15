@@ -1,14 +1,13 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-
-apply plugin: 'dagger.hilt.android.plugin'
-
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 apply from: '../shared_dependencies.gradle'
+apply from: '../coroutines_dependencies.gradle'
+apply from: '../hilt_dependencies.gradle'
+apply from: '../hilt_jetpack_dependencies.gradle'
 
 kapt {
     correctErrorTypes = true

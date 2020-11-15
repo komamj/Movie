@@ -1,9 +1,7 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
-apply from: '../shared_dependencies.gradle'
 apply from: '../test_dependencies.gradle'
 
 android {
@@ -15,8 +13,6 @@ android {
         targetSdkVersion defaultTargetSdkVersion as String
         versionCode 1
         versionName "1.0"
-
-        buildConfigField 'String', 'TMDB_API_KEY', "\"${tmdb_api_key}\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -41,6 +37,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
 }

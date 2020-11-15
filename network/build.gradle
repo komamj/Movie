@@ -1,11 +1,8 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'dagger.hilt.android.plugin'
-
-apply from: '../shared_dependencies.gradle'
+apply from: '../hilt_dependencies.gradle'
 apply from: '../test_dependencies.gradle'
 
 kapt {
@@ -54,6 +51,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 
     api "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"

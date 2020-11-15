@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 apply plugin: 'dagger.hilt.android.plugin'
+apply from: '../hilt_dependencies.gradle'
+apply from: '../test_dependencies.gradle'
 
 kapt {
     correctErrorTypes = true
@@ -50,9 +52,6 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 
-    implementation "com.google.dagger:hilt-android:$hiltVersion"
-    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
-
     implementation "androidx.room:room-runtime:$roomVersion"
     api "androidx.room:room-ktx:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
@@ -61,6 +60,5 @@ dependencies {
 
     implementation project(':log')
 
-    testImplementation project(':test')
     testImplementation "androidx.room:room-testing:$roomVersion"
 }

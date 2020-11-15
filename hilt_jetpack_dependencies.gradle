@@ -1,0 +1,4 @@
+dependencies {
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltJetpackVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
+}

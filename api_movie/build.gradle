@@ -40,6 +40,4 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
 
     implementation project(':common')
-
-    testImplementation project(':test')
 }

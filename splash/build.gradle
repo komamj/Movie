@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-
 apply plugin: 'com.alibaba.arouter'
 
-apply plugin: 'dagger.hilt.android.plugin'
-
 apply from: '../shared_dependencies.gradle'
+apply from: '../coroutines_dependencies.gradle'
+apply from: '../hilt_dependencies.gradle'
+apply from: '../hilt_jetpack_dependencies.gradle'
 apply from: '../test_dependencies.gradle'
 
 kapt {
