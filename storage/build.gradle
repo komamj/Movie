@@ -46,5 +46,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
 
-    implementation "androidx.datastore:datastore-preferences:$datastoreVersion"
+    // Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:$datastorePreferencesVersion"
+    // Proto DataStore
+    implementation "androidx.datastore:datastore-core:$datastoreCoreVersion"
+
 }
