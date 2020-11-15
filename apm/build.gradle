@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
+apply from: '../shared_dependencies.gradle'
+
 android {
     compileSdkVersion defaultCompileSdkVersion as Integer
     buildToolsVersion defaultBuildToolsVersion as String
@@ -34,13 +36,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
-
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
-    kapt "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
 
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
 

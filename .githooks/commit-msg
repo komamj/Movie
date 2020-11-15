@@ -2,7 +2,7 @@
 
 COMMIT_FORMAT_POLICY_TAG = "[COMMIT_FORMAT_POLICY] ERROR::"
 COMMIT_ERROR_BANNER = "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-$COMMIT_FORMAT_REGEX = /^(chore|docs|feat|fix|refactor|style|test|build|ci|revert|pref)\: \[[A-z0-9\s&]+\] #(((CAFPM|CAFAM|CAFEM|CAFCSM|CAFCS)-\d+)|((CAF[A-z0-9\s&]+)-\d+)|(N\/A)) [\sA-z0-9\-\.,_\"]+$/
+$COMMIT_FORMAT_REGEX = /^(chore|docs|feat|fix|refactor|style|test|build|ci|revert|pref)\: \[[A-z0-9\s&]+\] #((\d+)|((CAF[A-z0-9\s&]+)-\d+)|(N\/A)) [\sA-z0-9\-\.,_\"]+$/
 
 message_file = ARGV[0]
 message = File.read(message_file)

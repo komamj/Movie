@@ -13,7 +13,7 @@ import java.io.IOException
 /**
  * dataStore.data throws an IOException when an error is encountered when reading data
  */
-fun Flow<Preferences>.catchIOException() = this.catch { exception ->
+private fun Flow<Preferences>.catchIOException() = this.catch { exception ->
     if (exception is IOException) {
         emit(emptyPreferences())
     } else {
@@ -24,8 +24,8 @@ fun Flow<Preferences>.catchIOException() = this.catch { exception ->
 fun DataStore<Preferences>.readInt(key: String, defaultValue: Int = -1): Flow<Int> {
     val preferencesKey = preferencesKey<Int>(key)
     return data.catchIOException().map {
-            it[preferencesKey] ?: defaultValue
-        }
+        it[preferencesKey] ?: defaultValue
+    }
 }
 
 suspend fun DataStore<Preferences>.writeInt(key: String, value: Int) {
@@ -38,8 +38,8 @@ suspend fun DataStore<Preferences>.writeInt(key: String, value: Int) {
 fun DataStore<Preferences>.readBoolean(key: String, defaultValue: Boolean = false): Flow<Boolean> {
     val preferencesKey = preferencesKey<Boolean>(key)
     return data.catchIOException().map {
-            it[preferencesKey] ?: defaultValue
-        }
+        it[preferencesKey] ?: defaultValue
+    }
 }
 
 suspend fun DataStore<Preferences>.writeBoolean(key: String, value: Boolean) {

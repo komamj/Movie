@@ -1,13 +1,14 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-
-apply plugin: 'com.alibaba.arouter'
+/*apply plugin: 'com.alibaba.arouter'
 
 apply from: '../shared_dependencies.gradle'
-apply from: '../test_dependencies.gradle'
+apply from: '../hilt_dependencies.gradle'
+apply from: '../hilt_jetpack_dependencies.gradle'
+apply from: '../test_dependencies.gradle'*/
 
+/*
 kapt {
     correctErrorTypes = true
     useBuildCache = true
@@ -16,6 +17,7 @@ kapt {
         arg("AROUTER_GENERATE_DOC", "enable")
     }
 }
+*/
 
 android {
     compileSdkVersion defaultCompileSdkVersion as Integer
@@ -57,8 +59,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-    implementation "com.alibaba:arouter-api:$routerApiVersion"
-    kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
+   // kapt "com.alibaba:arouter-compiler:$routerCompilerVersion"
 
     implementation project(':database')
 }

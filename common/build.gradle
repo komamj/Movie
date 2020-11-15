@@ -1,9 +1,10 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 apply from: '../shared_dependencies.gradle'
+apply from: '../hilt_dependencies.gradle'
 
 android {
     compileSdkVersion defaultCompileSdkVersion as Integer
@@ -55,11 +56,4 @@ dependencies {
     api project(':database')
     api project(':permisson')
     implementation project(':apm')
-
-    testImplementation "junit:junit:$junitVersion"
-    testImplementation "org.mockito:mockito-core:$mockitoCoreVersion"
-    testImplementation "androidx.arch.core:core-testing:$archcoreTestingVersion"
-
-    androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }
